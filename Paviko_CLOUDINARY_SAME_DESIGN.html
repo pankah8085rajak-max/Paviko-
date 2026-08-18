@@ -1,0 +1,2832 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="paviko-build" content="Phase 1-7 unified navigation">
+<title>Paviko - Ghar ki Har Service, Ab Easy</title>
+    
+    <style>
+        /* ===== BASIC STYLING ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f8f9fa;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: #0d6efd;
+            color: white;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #ffc107;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .btn-header {
+            background: #ffc107;
+            color: #000;
+            padding: 8px 18px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 50px;
+            padding: 8px;
+            display: flex;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 15px 20px;
+            font-size: 16px;
+            border-radius: 50px;
+            outline: none;
+        }
+
+        .search-box button {
+            background: #ffc107;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            color: #000;
+        }
+
+        .hero-stats {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ffc107;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* ===== SECTIONS ===== */
+        .services {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .service-name {
+            font-weight: bold;
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* ===== PRICING ===== */
+        .pricing {
+            background: white;
+            padding: 60px 20px;
+        }
+
+        .pricing-table {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .pricing-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .pricing-table th {
+            background: #0d6efd;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .pricing-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .pricing-table tr:hover {
+            background: #e9ecef;
+        }
+
+        /* ===== PAYMENT MODEL ===== */
+        .payment-model {
+            padding: 60px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .payment-box {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .payment-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .payment-step-number {
+            background: #0d6efd;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .payment-step h4 {
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .payment-step p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .payment-note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 0 10px 10px 0;
+            margin-top: 20px;
+        }
+
+        .payment-note p {
+            font-size: 14px;
+            color: #856404;
+        }
+
+        /* ===== FREE OFFER BOX ===== */
+        .free-offer {
+            background: #e8f5e9;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 30px;
+            border: 2px solid #4caf50;
+        }
+
+        .free-offer-icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .free-offer h3 {
+            color: #2e7d32;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .free-offer p {
+            color: #333;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .free-offer small {
+            color: #666;
+            font-size: 14px;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* ===== EXAMPLE BOX ===== */
+        .example-box {
+            background: #fff3cd;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .example-box h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .example-box p {
+            color: #333;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* ===== RULES BOX ===== */
+        .rules-box {
+            background: #fce4ec;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            border-left: 4px solid #c62828;
+        }
+
+        .rules-box h4 {
+            color: #c62828;
+            margin-bottom: 10px;
+        }
+
+        .rules-box p {
+            color: #333;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* ===== COMMISSION BOX ===== */
+        .commission-box {
+            background: #e3f2fd;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .commission-box h4 {
+            color: #0d6efd;
+            margin-bottom: 15px;
+        }
+
+        .commission-box .upi {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #0d6efd;
+            font-size: 16px;
+        }
+
+        .commission-box small {
+            color: #666;
+            font-size: 12px;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-it-works {
+            background: white;
+            padding: 60px 20px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .step-number {
+            background: #0d6efd;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .step h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .step p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* ===== WORKER CTA ===== */
+        .worker-cta {
+            background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+            padding: 60px 20px;
+            text-align: center;
+            color: #000;
+        }
+
+        .worker-cta h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .worker-cta p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .btn-worker {
+            background: #000;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            display: inline-block;
+        }
+
+        /* ===== BOOKING FORM ===== */
+        .booking-section {
+            padding: 60px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .booking-form {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 3px rgba(13,110,253,0.1);
+        }
+
+        .btn-submit {
+            background: #0d6efd;
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: #0a58ca;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-section {
+            background: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .contact-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 40px auto 0;
+        }
+
+        .contact-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            min-width: 250px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .contact-card a {
+            color: #0d6efd;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .contact-card p {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #222;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer p {
+            color: #888;
+            font-size: 12px;
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* ===== MOBILE ===== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .search-box {
+                flex-direction: column;
+                border-radius: 20px;
+            }
+            
+            .search-box input {
+                border-radius: 20px;
+                margin-bottom: 5px;
+            }
+            
+            .search-box button {
+                border-radius: 20px;
+            }
+            
+            .hero-stats {
+                gap: 20px;
+            }
+            
+            .stat-number {
+                font-size: 24px;
+            }
+        }
+    </style>
+
+<style id="paviko-phase1-css">
+.phase1-section{padding:60px 20px;background:#f7faf8}
+.phase1-section .section-header{text-align:center;margin-bottom:25px}
+.p1-tabs{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.p1-tab{border:1px solid #ccc;background:#fff;padding:12px 18px;border-radius:10px;cursor:pointer;font-weight:700}
+.p1-tab.active{background:#0b7a45;color:#fff;border-color:#0b7a45}
+.p1-panel{display:none;max-width:850px;margin:auto}
+.p1-panel.active{display:block}
+.p1-form{background:#fff;padding:25px;border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,.08)}
+.p1-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.p1-grid>div{display:flex;flex-direction:column;gap:6px}
+.p1-grid .p1-full{grid-column:1/-1}
+.p1-form input,.p1-form select,.p1-form textarea{padding:12px;border:1px solid #ccc;border-radius:8px;font:inherit}
+.p1-submit{margin-top:18px;width:100%;padding:13px;border:0;border-radius:9px;background:#0b7a45;color:#fff;font-weight:700;cursor:pointer}
+.p1-message{margin-top:15px}
+.p1-profiles{max-width:1100px;margin:30px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.p1-card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 4px 15px rgba(0,0,0,.08)}
+.p1-card img,.p1-card video{max-width:100%;max-height:160px;border-radius:9px;margin:4px}
+@media(max-width:650px){.p1-grid{grid-template-columns:1fr}.p1-grid .p1-full{grid-column:auto}}
+</style>
+
+
+<style id="paviko-id-css">
+.paviko-id-section{padding:60px 20px;background:#f7faf8}
+.paviko-id-section .section-header{text-align:center;margin-bottom:24px}
+.paviko-id-box{max-width:900px;margin:auto;background:#fff;padding:24px;border-radius:16px;box-shadow:0 5px 20px rgba(0,0,0,.08)}
+.paviko-id-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.paviko-id-grid>div{display:flex;flex-direction:column;gap:6px}
+.paviko-id-full{grid-column:1/-1}
+.paviko-id-grid input,.paviko-id-grid select,.paviko-id-grid textarea{padding:12px;border:1px solid #ccc;border-radius:8px;font:inherit}
+.paviko-id-submit{width:100%;margin-top:18px;padding:14px;border:0;border-radius:9px;background:#0b7a45;color:#fff;font-weight:700;cursor:pointer}
+#pavikoIdResult{margin-top:15px}
+.paviko-my-profiles{margin-top:30px}
+.paviko-profile-card{border:1px solid #e1e1e1;border-radius:13px;padding:17px;margin-top:12px}
+.paviko-profile-card .pid{font-weight:800}
+.paviko-profile-card .status{display:inline-block;padding:5px 9px;margin:7px 0;border-radius:15px;background:#fff3cd;font-size:12px}
+@media(max-width:650px){.paviko-id-grid{grid-template-columns:1fr}.paviko-id-full{grid-column:auto}}
+</style>
+
+
+<style id="paviko-app-css">
+.paviko-app-nav{position:sticky;top:0;z-index:1000;display:flex;gap:7px;align-items:center;flex-wrap:wrap;padding:10px 14px;background:#fff;border-bottom:1px solid #e7e7e7;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.pnav-brand{font-weight:900;font-size:18px;margin-right:auto;border:0;background:none;cursor:pointer}
+.pnav-item{border:0;background:#f4f6f5;border-radius:9px;padding:9px 11px;cursor:pointer}
+.paviko-app-section{display:none;padding:50px 20px;background:#f7faf8}
+.paviko-app-section.active{display:block}
+.paviko-app-head{text-align:center;margin-bottom:22px}
+.paviko-search-row{max-width:900px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.paviko-search-row input{padding:13px;border:1px solid #ccc;border-radius:9px}
+.paviko-worker-grid{max-width:1100px;margin:25px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:17px}
+.pworker-card{background:#fff;border-radius:15px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.pworker-photo{width:72px;height:72px;border-radius:50%;background:#e9efeb;display:flex;align-items:center;justify-content:center;font-size:34px;margin-bottom:10px}
+.pworker-card button{border:0;border-radius:8px;padding:10px 13px;background:#0b7a45;color:#fff;font-weight:700;cursor:pointer}
+.paviko-account-card,.paviko-help-grid,.paviko-settings-list,#pavikoBookingList{max-width:900px;margin:auto}
+.paviko-account-card{background:#fff;padding:20px;border-radius:14px;display:flex;gap:18px;align-items:center}
+.paviko-avatar{font-size:45px}
+.paviko-help-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.paviko-help-grid>div{background:#fff;padding:18px;border-radius:12px}
+.paviko-settings-list{display:grid;gap:10px}
+.paviko-settings-list button{padding:15px;text-align:left;border:0;border-radius:10px;background:#fff;cursor:pointer}
+.paviko-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2000;padding:20px;overflow:auto}
+.paviko-modal.show{display:block}
+.paviko-modal-box{max-width:700px;margin:5vh auto;background:#fff;border-radius:16px;padding:24px;position:relative}
+.paviko-close{position:absolute;right:12px;top:8px;border:0;background:none;font-size:30px;cursor:pointer}
+.pwork-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.pwork-gallery div{background:#f1f3f2;padding:15px;border-radius:9px;text-align:center}
+@media(max-width:700px){.paviko-app-nav{overflow-x:auto;flex-wrap:nowrap}.pnav-item{white-space:nowrap}.paviko-search-row{grid-template-columns:1fr}}
+</style>
+
+
+<style id="paviko-phase2-css">
+.paviko-p2-section{padding:60px 20px;background:#f5f8f6}
+.paviko-p2-head{text-align:center;margin-bottom:25px}
+.p2-search-box{max-width:1000px;margin:auto;background:#fff;padding:18px;border-radius:14px;display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end;box-shadow:0 4px 15px rgba(0,0,0,.07)}
+.p2-search-box>div{display:flex;flex-direction:column;gap:6px}
+.p2-search-box input,.p2-search-box select,.p2-form-grid input,.p2-form-grid textarea{padding:12px;border:1px solid #ccc;border-radius:8px;font:inherit}
+.p2-search-box button,.p2-book-btn{padding:12px 17px;border:0;border-radius:9px;background:#0b7a45;color:#fff;font-weight:700;cursor:pointer}
+.p2-worker-grid{max-width:1100px;margin:25px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:17px}
+.p2-worker-card{background:#fff;border-radius:15px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.p2-worker-avatar{width:65px;height:65px;border-radius:50%;background:#e8efeb;display:flex;align-items:center;justify-content:center;font-size:30px;margin-bottom:10px}
+.p2-worker-card button{width:100%;padding:11px;border:0;border-radius:9px;background:#0b7a45;color:#fff;font-weight:700;cursor:pointer;margin-top:8px}
+.p2-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.58);z-index:3000;padding:18px;overflow:auto}
+.p2-modal.show{display:block}
+.p2-modal-box{max-width:720px;margin:4vh auto;background:#fff;border-radius:16px;padding:24px;position:relative}
+.p2-close{position:absolute;right:10px;top:5px;border:0;background:none;font-size:31px;cursor:pointer}
+.p2-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.p2-form-grid>div{display:flex;flex-direction:column;gap:6px}
+.p2-full{grid-column:1/-1}
+.p2-book-btn{width:100%;margin-top:18px}
+.p2-my-bookings{max-width:1000px;margin:35px auto}
+.p2-booking-card{background:#fff;padding:16px;border-radius:12px;margin-bottom:10px;border-left:4px solid #0b7a45}
+.p2-status{font-weight:700}
+@media(max-width:700px){.p2-search-box,.p2-form-grid{grid-template-columns:1fr}.p2-full{grid-column:auto}}
+</style>
+
+
+<style id="paviko-phase3-css">
+.paviko-p3-section{padding:60px 20px;background:#f7faf8}
+.p3-head{text-align:center;margin-bottom:25px}
+.p3-worker-login{max-width:700px;margin:auto;background:#fff;padding:20px;border-radius:14px;display:flex;gap:10px;align-items:end;box-shadow:0 4px 15px rgba(0,0,0,.07)}
+.p3-worker-login label{display:block;font-weight:700}
+.p3-worker-login input{flex:1;padding:12px;border:1px solid #ccc;border-radius:8px}
+.p3-worker-login button,.p3-action{padding:11px 14px;border:0;border-radius:8px;background:#0b7a45;color:#fff;font-weight:700;cursor:pointer}
+.p3-dashboard{max-width:1000px;margin:25px auto}
+.p3-worker-info{background:#fff;padding:18px;border-radius:14px;margin-bottom:15px}
+.p3-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:25px}
+.p3-stats div{background:#fff;border-radius:12px;padding:18px;text-align:center}
+.p3-stats b{display:block;font-size:25px}
+.p3-stats span{font-size:13px}
+.p3-booking{background:#fff;padding:18px;border-radius:13px;margin:12px 0;box-shadow:0 3px 10px rgba(0,0,0,.05)}
+.p3-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.p3-action.reject{background:#8b3030}
+.p3-action.complete{background:#235f8a}
+.p3-status{font-weight:800}
+@media(max-width:650px){.p3-worker-login{flex-direction:column;align-items:stretch}.p3-stats{grid-template-columns:1fr 1fr}}
+</style>
+
+
+<style id="paviko-p456-css">
+.paviko-p456-section{padding:60px 20px;background:#f7faf8}
+.p456-head{text-align:center;margin-bottom:25px}
+.p4-card,.p5-card,.p6-card,.p6-login{max-width:950px;margin:15px auto;background:#fff;padding:20px;border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.p456-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.p456-grid>div{display:flex;flex-direction:column;gap:6px}
+.p456-full{grid-column:1/-1}
+.p456-grid input,.p456-grid select,.p456-grid textarea,.p6-login input{padding:12px;border:1px solid #ccc;border-radius:8px;font:inherit}
+.p456-btn{padding:11px 15px;border:0;border-radius:8px;background:#0b7a45;color:#fff;font-weight:700;cursor:pointer}
+.p4-messages{min-height:100px;border:1px solid #eee;border-radius:10px;padding:12px;margin-bottom:10px}
+.p4-msg{padding:8px;margin:5px 0;background:#f1f5f2;border-radius:8px}
+.p4-chat-row{display:flex;gap:8px}.p4-chat-row input{flex:1;padding:12px;border:1px solid #ccc;border-radius:8px}
+.p4-notification,.p5-payment,.p6-worker{padding:13px;border:1px solid #eee;border-radius:9px;margin:8px 0}
+.p6-login{display:flex;gap:10px;align-items:end}.p6-login label{display:block}.p6-login input{flex:1}
+.p6-stats{max-width:950px;margin:20px auto;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.p6-stats div{background:#fff;padding:18px;text-align:center;border-radius:12px}.p6-stats b{display:block;font-size:25px}
+.p6-worker button{margin:4px;padding:8px 10px;border:0;border-radius:7px;cursor:pointer}
+.p6-security{line-height:1.9}
+@media(max-width:650px){.p456-grid,.p6-stats{grid-template-columns:1fr}.p456-full{grid-column:auto}.p6-login{flex-direction:column;align-items:stretch}.p4-chat-row{flex-direction:column}}
+</style>
+
+
+<style id="paviko-navigation-css">
+html{scroll-behavior:smooth}
+.paviko-quick-nav{position:fixed;top:14px;right:14px;z-index:9999}
+.paviko-menu-btn{width:46px;height:46px;border:0;border-radius:50%;background:#0b7a45;color:#fff;font-size:23px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+.paviko-menu-panel{display:none;position:absolute;right:0;top:54px;width:245px;background:#fff;border-radius:14px;padding:10px;box-shadow:0 8px 28px rgba(0,0,0,.18);border:1px solid #e8ece9}
+.paviko-menu-panel.open{display:grid;gap:4px}
+.paviko-menu-title{font-weight:900;padding:8px 10px;border-bottom:1px solid #eee;margin-bottom:3px}
+.paviko-menu-panel button{border:0;background:transparent;text-align:left;padding:11px;border-radius:8px;cursor:pointer;font:inherit}
+.paviko-menu-panel button:hover{background:#f0f5f2}
+.paviko-phase-switcher{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:9998;background:rgba(255,255,255,.96);border:1px solid #e3e8e5;border-radius:30px;padding:6px;box-shadow:0 5px 20px rgba(0,0,0,.15);display:flex;gap:5px}
+.paviko-phase-switcher button{width:34px;height:34px;border:0;border-radius:50%;background:#edf1ef;cursor:pointer;font-weight:800}
+.paviko-phase-switcher button.active{background:#0b7a45;color:#fff}
+@media(max-width:600px){
+ .paviko-menu-panel{width:220px}
+ .paviko-phase-switcher{bottom:10px}
+}
+</style>
+
+
+<style id="paviko-phase7-css">
+.p7-section{padding:60px 20px;background:#f7faf8}
+.p7-head{text-align:center;margin-bottom:25px}.p7-grid{max-width:1050px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.p7-card{background:#fff;padding:20px;border-radius:14px;box-shadow:0 4px 15px rgba(0,0,0,.06)}
+.p7-card input,.p7-card select{display:block;width:100%;box-sizing:border-box;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:8px;font:inherit}
+.p7-card button{padding:11px 15px;border:0;border-radius:8px;background:#0b7a45;color:#fff;font-weight:700;cursor:pointer;margin:4px 0}
+.p7-check{display:flex;justify-content:space-between;padding:10px;border-bottom:1px solid #eee}.p7-note{font-size:13px;opacity:.7}
+.p7-media-item{display:inline-block;margin:6px;padding:6px;background:#f0f3f1;border-radius:8px}.p7-media-item img,.p7-media-item video{max-width:120px;max-height:90px;display:block}
+@media(max-width:700px){.p7-grid{grid-template-columns:1fr}}
+</style>
+
+
+<style id="paviko-sponsor-css">
+.paviko-sponsor-section{padding:60px 20px;background:#f7faf8}
+.paviko-sponsor-card,.paviko-sponsor-form{max-width:950px;margin:15px auto;background:#fff;padding:20px;border-radius:14px;box-shadow:0 4px 15px rgba(0,0,0,.06)}
+.paviko-sponsored-label{display:inline-block;font-size:12px;font-weight:800;padding:5px 8px;border-radius:6px;background:#fff1cf}
+.paviko-sponsor-actions{display:flex;gap:8px;flex-wrap:wrap}
+.paviko-sponsor-actions button,.paviko-sponsor-save{border:0;border-radius:8px;padding:10px 13px;cursor:pointer;font-weight:700}
+.paviko-sponsor-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.paviko-sponsor-grid input,.paviko-sponsor-grid textarea{width:100%;box-sizing:border-box;padding:11px;border:1px solid #ccc;border-radius:8px;font:inherit}
+.paviko-sponsor-grid textarea{min-height:80px}
+.paviko-sponsor-note{font-size:13px;opacity:.75}
+.paviko-plans{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.paviko-plans label{padding:10px;border:1px solid #ddd;border-radius:9px}
+.paviko-sponsor-save{background:#0b7a45;color:#fff}
+@media(max-width:700px){.paviko-sponsor-grid{grid-template-columns:1fr}}
+</style>
+
+
+<style id="paviko-image-reference-design">
+/* ===== PAVIKO FINAL DESIGN — based on the user's supplied reference image ===== */
+body{background:#f7f8fa!important;color:#172033!important;padding-bottom:92px!important}
+body>.header, #paviko-quick-nav, #paviko-phase-switcher, #paviko-app-nav{display:none!important}
+
+.paviko-ref-header{
+  position:sticky;top:0;z-index:500;background:#fff;
+  height:92px;display:flex;align-items:center;justify-content:center;
+  border-bottom:1px solid #e6e8ed;box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+.paviko-ref-logo{font-size:48px;font-weight:800;letter-spacing:-2px;color:#101319}
+.paviko-ref-logo span{color:#f5b400}
+.paviko-ref-menu{
+  position:absolute;left:24px;top:18px;width:58px;height:58px;
+  border:2px solid #172033;border-radius:10px;background:#fff;
+  font-size:31px;line-height:1;cursor:pointer;color:#172033;
+}
+.paviko-ref-actions{position:absolute;right:28px;top:0;height:92px;display:flex;align-items:center;gap:28px}
+.paviko-ref-action{border:0;background:transparent;font-size:18px;font-weight:600;color:#172033;cursor:pointer}
+
+.paviko-ref-menu-panel{
+  display:none;position:fixed;left:20px;top:84px;z-index:600;width:270px;
+  background:#fff;border:1px solid #e1e4e9;border-radius:14px;
+  box-shadow:0 12px 35px rgba(0,0,0,.16);padding:12px;
+}
+.paviko-ref-menu-panel button{
+  width:100%;text-align:left;border:0;background:#fff;padding:13px 12px;
+  border-radius:9px;font-size:16px;cursor:pointer;
+}
+.paviko-ref-menu-panel button:hover{background:#f2f5f9}
+
+.paviko-ref-home{max-width:1120px;margin:28px auto 0;padding:0 20px}
+.paviko-ref-hero{
+  min-height:330px;border-radius:28px;background:#0867e8;color:#fff;
+  padding:38px 46px 28px;position:relative;overflow:hidden;
+}
+.paviko-ref-hero h1{font-size:43px;line-height:1.08;margin:0 0 14px;max-width:560px}
+.paviko-ref-hero p{font-size:22px;line-height:1.45;max-width:600px;margin:0}
+.paviko-ref-art{position:absolute;right:35px;top:28px;font-size:105px;opacity:.96}
+.paviko-ref-search{
+  position:absolute;left:50px;right:50px;bottom:26px;height:66px;background:#fff;
+  border-radius:18px;display:flex;align-items:center;padding:0 8px 0 22px;
+}
+.paviko-ref-search input{flex:1;border:0;outline:0;font-size:18px;color:#333;min-width:0}
+.paviko-ref-search button{width:78px;height:54px;border:0;border-radius:15px;background:#ffbf00;font-size:30px;cursor:pointer}
+
+.paviko-ref-services{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;margin:24px 0}
+.paviko-ref-service{
+  min-height:128px;background:#fff;border:1px solid #e2e5eb;border-radius:20px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;font-size:17px;font-weight:600;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.03)
+}
+.paviko-ref-service .ico{font-size:38px}
+
+.paviko-ref-stats{
+  background:#fff;border:1px solid #e2e5eb;border-radius:20px;
+  display:grid;grid-template-columns:repeat(4,1fr);margin-bottom:24px;overflow:hidden
+}
+.paviko-ref-stat{padding:24px 12px;text-align:center;border-right:1px solid #e0e3e8}
+.paviko-ref-stat:last-child{border-right:0}
+.paviko-ref-stat b{display:block;font-size:26px;margin-bottom:5px}
+.paviko-ref-stat span{font-size:16px}
+
+.paviko-ref-business{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.paviko-ref-card{border-radius:22px;padding:25px;background:#fff;border:1px solid #e2e5eb}
+.paviko-ref-card.premium{background:#f4f8ff}
+.paviko-ref-card.sponsor{background:#f5fbf3}
+.paviko-ref-card h2{margin:0 0 10px;font-size:24px}
+.paviko-ref-card p{font-size:16px;line-height:1.5;min-height:58px}
+.paviko-ref-plans{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+.paviko-ref-plan{background:#fff;border:1px solid #e1e4e9;border-radius:10px;padding:13px;text-align:center;font-size:15px}
+.paviko-ref-plan b{display:block;font-size:24px;color:#0867e8;margin-bottom:4px}
+.sponsor .paviko-ref-plan b{color:#168b2d}
+.paviko-ref-cta{width:100%;border:0;border-radius:10px;padding:15px;font-size:18px;font-weight:700;color:#fff;background:#0867e8;cursor:pointer}
+.sponsor .paviko-ref-cta{background:#19a637}
+
+.paviko-ref-bottom{
+  position:fixed;left:18px;right:18px;bottom:12px;z-index:550;
+  background:#fff;border:1px solid #e1e4e9;border-radius:20px;
+  box-shadow:0 8px 28px rgba(0,0,0,.14);display:grid;grid-template-columns:repeat(5,1fr);
+  padding:7px 8px;
+}
+.paviko-ref-bottom button{border:0;background:transparent;padding:9px 4px;color:#202735;font-size:14px;cursor:pointer}
+.paviko-ref-bottom button .bi{display:block;font-size:27px;margin-bottom:3px}
+.paviko-ref-bottom button.active{color:#0867e8;font-weight:700;border-bottom:3px solid #0867e8}
+
+.paviko-ref-content{max-width:1120px;margin:25px auto;padding:0 20px}
+.paviko-ref-content>section{margin-top:20px}
+
+@media(max-width:800px){
+  .paviko-ref-logo{font-size:34px}.paviko-ref-header{height:72px}
+  .paviko-ref-actions{right:12px;height:72px;gap:8px}.paviko-ref-action{font-size:0}
+  .paviko-ref-action:first-child{font-size:22px}.paviko-ref-action:last-child{font-size:22px}
+  .paviko-ref-menu{left:12px;top:10px;width:50px;height:50px;font-size:27px}
+  .paviko-ref-hero{padding:28px 24px 105px;min-height:390px}.paviko-ref-hero h1{font-size:34px}
+  .paviko-ref-hero p{font-size:17px}.paviko-ref-art{right:12px;top:35px;font-size:72px}
+  .paviko-ref-search{left:20px;right:20px;bottom:20px;height:58px}.paviko-ref-search button{height:48px;width:62px}
+  .paviko-ref-services{grid-template-columns:repeat(3,1fr);gap:10px}.paviko-ref-service{min-height:105px;font-size:14px}
+  .paviko-ref-service .ico{font-size:30px}.paviko-ref-stats{grid-template-columns:repeat(2,1fr)}
+  .paviko-ref-stat:nth-child(2){border-right:0}.paviko-ref-stat:nth-child(-n+2){border-bottom:1px solid #e0e3e8}
+  .paviko-ref-business{grid-template-columns:1fr}.paviko-ref-bottom{left:7px;right:7px}
+}
+</style>
+
+
+<style id="paviko-mobile-correction">
+@media (max-width:800px){
+  /* Header: keep the existing look, only prevent overlap */
+  .paviko-ref-header{
+    height:78px!important;
+    padding:0 72px!important;
+    box-sizing:border-box!important;
+  }
+  .paviko-ref-logo{
+    font-size:34px!important;
+    line-height:1!important;
+    white-space:nowrap!important;
+    position:static!important;
+  }
+  .paviko-ref-menu{
+    left:18px!important;
+    top:14px!important;
+    width:50px!important;
+    height:50px!important;
+    font-size:27px!important;
+  }
+  .paviko-ref-actions{
+    right:14px!important;
+    top:0!important;
+    height:78px!important;
+    gap:10px!important;
+  }
+  .paviko-ref-action{
+    font-size:0!important;
+    padding:6px!important;
+    white-space:nowrap!important;
+  }
+  .paviko-ref-action:first-child::before{content:"♧";font-size:25px}
+  .paviko-ref-action:last-child::before{content:"⚙";font-size:25px}
+
+  /* Hero: preserve blue design, stop text/art from colliding */
+  .paviko-ref-home{
+    margin-top:18px!important;
+    padding:0 14px!important;
+  }
+  .paviko-ref-hero{
+    min-height:0!important;
+    height:auto!important;
+    padding:28px 22px 92px!important;
+    border-radius:24px!important;
+  }
+  .paviko-ref-hero h1{
+    font-size:34px!important;
+    line-height:1.12!important;
+    max-width:100%!important;
+    margin:0 0 12px!important;
+    position:relative!important;
+    z-index:2!important;
+  }
+  .paviko-ref-hero p{
+    font-size:17px!important;
+    line-height:1.45!important;
+    max-width:68%!important;
+    margin:0!important;
+    position:relative!important;
+    z-index:2!important;
+  }
+  .paviko-ref-art{
+    right:10px!important;
+    top:54px!important;
+    font-size:52px!important;
+    z-index:1!important;
+    white-space:nowrap!important;
+  }
+  .paviko-ref-search{
+    left:18px!important;
+    right:18px!important;
+    bottom:18px!important;
+    height:56px!important;
+    padding-left:15px!important;
+    border-radius:16px!important;
+    box-sizing:border-box!important;
+  }
+  .paviko-ref-search input{
+    min-width:0!important;
+    width:100%!important;
+    font-size:16px!important;
+    text-overflow:ellipsis!important;
+  }
+  .paviko-ref-search button{
+    flex:0 0 58px!important;
+    width:58px!important;
+    height:46px!important;
+    border-radius:13px!important;
+    font-size:25px!important;
+  }
+
+  /* Services: keep cards, make the grid fit the phone */
+  .paviko-ref-services{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:10px!important;
+    margin:16px 0!important;
+  }
+  .paviko-ref-service{
+    min-height:102px!important;
+    padding:8px 4px!important;
+    box-sizing:border-box!important;
+  }
+
+  /* Bottom navigation: keep it above content and reserve its space */
+  body{padding-bottom:112px!important}
+  .paviko-ref-bottom{
+    left:8px!important;
+    right:8px!important;
+    bottom:8px!important;
+    min-height:82px!important;
+    border-radius:20px!important;
+    padding:6px 3px!important;
+  }
+  .paviko-ref-bottom button{
+    min-width:0!important;
+    padding:7px 2px!important;
+    font-size:12px!important;
+    line-height:1.15!important;
+  }
+  .paviko-ref-bottom button .bi{
+    font-size:23px!important;
+    margin-bottom:3px!important;
+  }
+  .paviko-ref-bottom button.active{
+    border-bottom-width:3px!important;
+  }
+
+  /* Stats/cards remain accessible above the fixed nav */
+  .paviko-ref-stats{margin-bottom:16px!important}
+  .paviko-ref-business{padding-bottom:10px!important}
+}
+
+/* The floating green chat bubble is not part of the supplied reference design.
+   Hide only that extra floating control; the Messages bottom-nav item remains. */
+#chat-float,
+.chat-float,
+.floating-chat,
+.floating-chat-button,
+.whatsapp-float,
+.paviko-chat-float{
+  display:none!important;
+}
+</style>
+
+</head>
+<body>
+
+<header class="paviko-ref-header">
+  <button id="paviko-ref-menu" class="paviko-ref-menu" aria-label="Paviko menu">☰</button>
+  <div class="paviko-ref-logo">PAVI<span>KO</span></div>
+  <div class="paviko-ref-actions">
+    <button class="paviko-ref-action" id="paviko-ref-notify">♧ Notifications</button>
+    <button class="paviko-ref-action" id="paviko-ref-settings">⚙ Settings</button>
+  </div>
+</header>
+
+<div id="paviko-ref-menu-panel" class="paviko-ref-menu-panel">
+  <button data-ref-go="home">🏠 Home</button>
+  <button data-ref-go="find">🔎 Find Workers</button>
+  <button data-ref-go="bookings">📋 My Bookings</button>
+  <button data-ref-go="messages">💬 Messages</button>
+  <button data-ref-go="profile">👤 My Profile</button>
+  <hr>
+  <button data-ref-go="p1">👤 Phase 1 — Profiles</button>
+  <button data-ref-go="p2">📅 Phase 2 — Booking</button>
+  <button data-ref-go="p3">👷 Phase 3 — Worker</button>
+  <button data-ref-go="p4">⭐ Phase 4 — Chat & Reviews</button>
+  <button data-ref-go="p5">💳 Phase 5 — Payments</button>
+  <button data-ref-go="p6">⚙ Phase 6 — Admin & Security</button>
+  <button data-ref-go="p7">🚀 Phase 7 — Website</button>
+  <button data-ref-go="sponsor">📢 Sponsors</button>
+</div>
+
+<main id="paviko-ref-home" class="paviko-ref-home">
+  <section class="paviko-ref-hero">
+    <div class="paviko-ref-art">🏠🧰</div>
+    <h1>Ghar ki Har Service,<br>Ab Easy</h1>
+    <p>Electrician, Plumber, Carpenter, Painter —<br>Sab Kuch Ek Jagah</p>
+    <div class="paviko-ref-search">
+      <input id="paviko-ref-search-input" placeholder="Aapko kaunsa kaam karwana hai?">
+      <button id="paviko-ref-search-btn" aria-label="Search">⌕</button>
+    </div>
+  </section>
+
+  <section class="paviko-ref-services">
+    <button class="paviko-ref-service" data-service="Electrician"><span class="ico">⚡</span>Electrician</button>
+    <button class="paviko-ref-service" data-service="Plumber"><span class="ico">🚰</span>Plumber</button>
+    <button class="paviko-ref-service" data-service="Carpenter"><span class="ico">🔨</span>Carpenter</button>
+    <button class="paviko-ref-service" data-service="Painter"><span class="ico">🖌️</span>Painter</button>
+    <button class="paviko-ref-service" data-service="AC Repair"><span class="ico">🛠️</span>AC Repair</button>
+    <button class="paviko-ref-service" data-service="More"><span class="ico">•••</span>More</button>
+  </section>
+
+  <section class="paviko-ref-stats">
+    <div class="paviko-ref-stat"><b>10+</b><span>Services</span></div>
+    <div class="paviko-ref-stat"><b>5 FREE</b><span>Worker Leads</span></div>
+    <div class="paviko-ref-stat"><b>Trusted</b><span>Verified Workers</span></div>
+    <div class="paviko-ref-stat"><b>Safe</b><span>Secure & Easy</span></div>
+  </section>
+
+  <section class="paviko-ref-business">
+    <div class="paviko-ref-card premium">
+      <h2>★ Premium Profile</h2>
+      <p>Apni profile premium banao, zyada leads pao aur apna kaam badhao.</p>
+      <div class="paviko-ref-plans">
+        <div class="paviko-ref-plan"><b>₹49</b>1 Month</div>
+        <div class="paviko-ref-plan"><b>₹99</b>3 Months</div>
+        <div class="paviko-ref-plan"><b>₹299</b>12 Months</div>
+      </div>
+      <button class="paviko-ref-cta" data-ref-go="p5">Upgrade to Premium →</button>
+    </div>
+    <div class="paviko-ref-card sponsor">
+      <h2>📢 Sponsor Business</h2>
+      <p>Apne business ko sponsor karo aur hazaaro logon tak apni shop, product aur service pahunchao.</p>
+      <div class="paviko-ref-plans">
+        <div class="paviko-ref-plan"><b>₹499</b>1 Month</div>
+        <div class="paviko-ref-plan"><b>₹1,299</b>3 Months</div>
+        <div class="paviko-ref-plan"><b>₹3,999</b>12 Months</div>
+      </div>
+      <button class="paviko-ref-cta" data-ref-go="sponsor">Sponsor Your Business →</button>
+    </div>
+  </section>
+</main>
+
+<nav class="paviko-ref-bottom" aria-label="Paviko navigation">
+  <button data-ref-go="home" class="active"><span class="bi">⌂</span>Home</button>
+  <button data-ref-go="find"><span class="bi">⌕</span>Find Workers</button>
+  <button data-ref-go="bookings"><span class="bi">▣</span>My Bookings</button>
+  <button data-ref-go="messages"><span class="bi">◯</span>Messages</button>
+  <button data-ref-go="profile"><span class="bi">♙</span>My Profile</button>
+</nav>
+
+<div id="paviko-ref-content" class="paviko-ref-content">
+
+<div id="paviko-quick-nav" class="paviko-quick-nav">
+  <button id="paviko-menu-btn" class="paviko-menu-btn" aria-label="Open Paviko menu">☰</button>
+  <div id="paviko-menu-panel" class="paviko-menu-panel">
+    <div class="paviko-menu-title">PAVIKO</div>
+    <button data-pnav="home">🏠 Home</button>
+    <button data-pnav="find">🔎 Find Workers</button>
+    <button data-pnav="p1">👤 Profiles</button>
+    <button data-pnav="p2">📅 Booking</button>
+    <button data-pnav="p3">👷 Worker Dashboard</button>
+    <button data-pnav="p4">⭐ Chat & Reviews</button>
+    <button data-pnav="p5">💳 Payments</button>
+    <button data-pnav="p6">⚙️ Admin & Security</button><button data-pnav="p7">🚀 Real Website Foundation</button><button data-pnav="sponsor">📢 Sponsors</button>
+    <button data-pnav="help">❓ Help</button>
+  </div>
+</div>
+<div id="paviko-phase-switcher" class="paviko-phase-switcher" aria-label="Paviko sections">
+  <button data-phase="p1">1</button>
+  <button data-phase="p2">2</button>
+  <button data-phase="p3">3</button>
+  <button data-phase="p4">4</button>
+  <button data-phase="p5">5</button>
+  <button data-phase="p6">6</button><button data-phase="p7">7</button>
+</div>
+
+
+<div id="paviko-app-nav" class="paviko-app-nav">
+  <button type="button" class="pnav-brand" data-go="paviko-home">PAVIKO</button>
+  <button type="button" class="pnav-item" data-go="paviko-home">🏠 Home</button>
+  <button type="button" class="pnav-item" data-go="paviko-find">🔎 Find Workers</button>
+  <button type="button" class="pnav-item" data-go="paviko-bookings">📋 My Bookings</button>
+  <button type="button" class="pnav-item" data-go="paviko-account">👤 My Profile</button>
+  <button type="button" class="pnav-item" data-go="paviko-help">❓ Help</button>
+  <button type="button" class="pnav-item" data-go="paviko-settings">⚙️ Settings</button>
+</div>
+
+<section id="paviko-find" class="paviko-app-section">
+  <div class="paviko-app-head">
+    <h2>Find Workers</h2>
+    <p>Service aur location ke hisaab se worker profile dekhiye.</p>
+  </div>
+  <div class="paviko-search-row">
+    <input id="findWorkerSearch" placeholder="Electrician, Plumber, Tailor...">
+    <input id="findWorkerLocation" placeholder="City / Area">
+  </div>
+  <div id="workerDiscovery" class="paviko-worker-grid"></div>
+</section>
+
+<section id="paviko-bookings" class="paviko-app-section">
+  <div class="paviko-app-head"><h2>My Bookings</h2><p>Aapki booking history yahan dikhegi.</p></div>
+  <div id="pavikoBookingList"></div>
+</section>
+
+<section id="paviko-account" class="paviko-app-section">
+  <div class="paviko-app-head"><h2>My Profile</h2><p>Customer profile ka basic view.</p></div>
+  <div class="paviko-account-card">
+    <div class="paviko-avatar">👤</div>
+    <div><h3>Paviko Customer</h3><p>Mobile / profile details yahan future me OTP login ke baad aayengi.</p></div>
+  </div>
+</section>
+
+<section id="paviko-help" class="paviko-app-section">
+  <div class="paviko-app-head"><h2>Help & Support</h2><p>Booking ya account se related help.</p></div>
+  <div class="paviko-help-grid">
+    <div><b>📞 Customer Support</b><p>Booking issue ke liye Paviko support.</p></div>
+    <div><b>🛠️ Worker Support</b><p>Profile aur work upload related help.</p></div>
+    <div><b>🔐 Account Help</b><p>Login, mobile aur privacy help.</p></div>
+  </div>
+</section>
+
+<section id="paviko-settings" class="paviko-app-section">
+  <div class="paviko-app-head"><h2>Settings</h2><p>Basic Paviko settings.</p></div>
+  <div class="paviko-settings-list">
+    <button type="button">📍 Location Settings</button>
+    <button type="button">🔔 Notifications</button>
+    <button type="button">🔒 Privacy & Security</button>
+    <button type="button">📱 Mobile / Account</button>
+  </div>
+</section>
+
+<div id="paviko-worker-modal" class="paviko-modal" aria-hidden="true">
+  <div class="paviko-modal-box">
+    <button type="button" class="paviko-close" id="closeWorkerProfile">×</button>
+    <div id="workerProfileContent"></div>
+  </div>
+</div>
+
+
+    <!-- ===== HEADER ===== -->
+    <div class="header">
+        <div class="logo">Pavi<span>ko</span></div>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#payment">Worker Model</a>
+            <a href="#how">How it Works</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <a href="#booking" class="btn-header">Book Service</a>
+    </div>
+
+    <!-- ===== HERO ===== -->
+    <div class="hero">
+        <h1>Ghar ki Har Service, Ab Easy</h1>
+        <p>Electrician, Plumber, Carpenter, Painter — Sab Kuch Ek Jagah</p>
+        
+        <div class="search-box">
+            <input id="serviceSearch" type="text" placeholder="Aaj aapko kaunsa kaam karwana hai?">
+            <button type="button" id="heroBookBtn">🔍 Book Now</button>
+        </div>
+        
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Services</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">5 FREE</div>
+                <div class="stat-label">Worker Leads</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">₹9</div>
+                <div class="stat-label">Per Lead After</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SERVICES ===== -->
+    <div class="services" id="services">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">Choose from our wide range of home services</p>
+        
+        <div class="services-grid">
+            <div class="service-card" data-service="electrician">
+                <div class="service-icon">⚡</div>
+                <div class="service-name">Electrician</div>
+            </div>
+            <div class="service-card" data-service="plumber">
+                <div class="service-icon">🔧</div>
+                <div class="service-name">Plumber</div>
+            </div>
+            <div class="service-card" data-service="carpenter">
+                <div class="service-icon">🪚</div>
+                <div class="service-name">Carpenter</div>
+            </div>
+            <div class="service-card" data-service="painter">
+                <div class="service-icon">🎨</div>
+                <div class="service-name">Painter</div>
+            </div>
+            <div class="service-card" data-service="cleaning">
+                <div class="service-icon">🧹</div>
+                <div class="service-name">Cleaning</div>
+            </div>
+            <div class="service-card" data-service="wash">
+                <div class="service-icon">🚗</div>
+                <div class="service-name">Car/Bike Wash</div>
+            </div>
+            <div class="service-card" data-service="ac">
+                <div class="service-icon">❄️</div>
+                <div class="service-name">AC Technician</div>
+            </div>
+            <div class="service-card" data-service="tailor">
+                <div class="service-icon">🧵</div>
+                <div class="service-name">Tailor</div>
+            </div>
+            <div class="service-card" data-service="mistri">
+                <div class="service-icon">🏗️</div>
+                <div class="service-name">Raj Mistri</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PRICING ===== -->
+    <div class="pricing" id="pricing">
+        <h2 class="section-title">Our Pricing</h2>
+        <p class="section-subtitle">Transparent pricing - No hidden charges</p>
+        
+        <div class="pricing-table">
+            <table>
+                <tr>
+                    <th>Service</th>
+                    <th>Starting Price</th>
+                    <th>Time Required</th>
+                </tr>
+                <tr>
+                    <td>⚡ Light Fitting</td>
+                    <td>₹150</td>
+                    <td>30 min</td>
+                </tr>
+                <tr>
+                    <td>🔧 Fan Installation</td>
+                    <td>₹250</td>
+                    <td>45 min</td>
+                </tr>
+                <tr>
+                    <td>🚿 Basic Plumbing</td>
+                    <td>₹200</td>
+                    <td>1 hour</td>
+                </tr>
+                <tr>
+                    <td>🚗 Car Wash</td>
+                    <td>₹350</td>
+                    <td>1 hour</td>
+                </tr>
+                <tr>
+                    <td>🏍️ Bike Wash</td>
+                    <td>₹100</td>
+                    <td>20 min</td>
+                </tr>
+                <tr>
+                    <td>❄️ AC Service</td>
+                    <td>₹450</td>
+                    <td>1.5 hour</td>
+
+    <!-- ===== BOOKING ===== -->
+    <div class="booking-section" id="booking">
+        <h2 class="section-title">Book a Service</h2>
+        <p class="section-subtitle">Apni details bhariye aur Paviko booking request banaiye</p>
+        <div class="booking-form">
+            <div class="form-group"><label>Service</label><select id="bookingService"><option value="">Select Service</option><option value="electrician">Electrician</option><option value="plumber">Plumber</option><option value="carpenter">Carpenter</option><option value="painter">Painter</option><option value="cleaning">Cleaning</option><option value="wash">Car/Bike Wash</option><option value="ac">AC Technician</option><option value="tailor">Tailor</option><option value="mistri">Raj Mistri</option></select></div>
+            <div class="form-group"><label>Your Name</label><input id="customerName" type="text" placeholder="Naam"></div>
+            <div class="form-group"><label>Mobile Number</label><input id="customerMobile" type="tel" inputmode="numeric" maxlength="10" placeholder="10 digit mobile number"></div>
+            <div class="form-group"><label>Address / Area</label><textarea id="customerAddress" rows="3" placeholder="Kaam ki location / address"></textarea></div>
+            <div class="form-group"><label>Preferred Date</label><input id="bookingDate" type="date"></div>
+            <div class="form-group"><label>Preferred Time</label><input id="bookingTime" type="time"></div>
+            <div class="form-group"><label>Work Details</label><textarea id="workDetails" rows="3" placeholder="Kaunsa kaam karwana hai?"></textarea></div>
+            <button class="btn-submit" type="button" id="confirmBooking">Confirm Booking</button>
+            <div id="bookingResult" style="display:none;margin-top:20px"></div>
+        </div>
+    </div>
+
+    <!-- ===== CONTACT ===== -->
+    <div class="contact-section" id="contact"><h2 class="section-title">Contact Paviko</h2><p class="section-subtitle">Booking ya worker registration ke liye contact karein</p></div>
+    <div class="footer"><div class="footer-links"><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#booking">Book Service</a><a href="#contact">Contact</a></div><p>© 2026 Paviko. Ghar ki Har Service, Ab Easy.</p></div>
+
+    <a class="whatsapp-float" id="whatsappFloat" href="#" aria-label="WhatsApp">💬</a>
+
+<script>
+(function(){
+  'use strict';
+  var names={electrician:'Electrician',plumber:'Plumber',carpenter:'Carpenter',painter:'Painter',cleaning:'Cleaning',wash:'Car/Bike Wash',ac:'AC Technician',tailor:'Tailor',mistri:'Raj Mistri'};
+  function goBooking(service){var s=document.getElementById('bookingService'); if(s)s.value=service||''; var b=document.getElementById('booking'); if(b)b.scrollIntoView({behavior:'smooth'});}
+  document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('.service-card[data-service]').forEach(function(card){card.addEventListener('click',function(){goBooking(card.getAttribute('data-service'));});});
+    var hero=document.getElementById('heroBookBtn'); if(hero)hero.addEventListener('click',function(){goBooking('');});
+    var search=document.getElementById('serviceSearch'); if(search)search.addEventListener('input',function(){var q=this.value.toLowerCase().trim();document.querySelectorAll('.service-card[data-service]').forEach(function(c){var n=c.querySelector('.service-name').textContent.toLowerCase();c.style.display=(!q||n.indexOf(q)>=0)?'':'none';});});
+    var d=document.getElementById('bookingDate'); if(d)d.min=new Date().toISOString().slice(0,10);
+    var btn=document.getElementById('confirmBooking'); if(btn)btn.addEventListener('click',function(){
+      var service=document.getElementById('bookingService').value,name=document.getElementById('customerName').value.trim(),mobile=document.getElementById('customerMobile').value.trim(),address=document.getElementById('customerAddress').value.trim(),date=document.getElementById('bookingDate').value,time=document.getElementById('bookingTime').value,details=document.getElementById('workDetails').value.trim();
+      if(!service||!name||!/^[6-9][0-9]{9}$/.test(mobile)||!address||!date||!time){alert('Service, naam, valid 10-digit mobile, address, date aur time fill karein.');return;}
+      var id='PAV-'+String(Date.now()).slice(-8), b={id:id,service:names[service],name:name,mobile:mobile,address:address,date:date,time:time,details:details};
+      try{localStorage.setItem('paviko_last_booking',JSON.stringify(b));}catch(e){}
+      var r=document.getElementById('bookingResult');r.style.display='block';r.innerHTML='<div class="payment-note"><strong>Booking Request Ready ✅</strong><br>Booking ID: <strong>'+id+'</strong><br>'+names[service]+' • '+date+' • '+time+'<br><br><button type="button" class="btn-submit" id="sendWA">Send Booking on WhatsApp</button></div>';
+      document.getElementById('sendWA').addEventListener('click',function(){var msg='Paviko Booking\nBooking ID: '+id+'\nService: '+names[service]+'\nName: '+name+'\nMobile: '+mobile+'\nAddress: '+address+'\nDate: '+date+'\nTime: '+time+'\nWork: '+(details||'Not specified');var num='91XXXXXXXXXX';window.open('https://wa.me/'+num+'?text='+encodeURIComponent(msg),'_blank');});
+    });
+    var wf=document.getElementById('whatsappFloat'); if(wf)wf.addEventListener('click',function(e){e.preventDefault();alert('Paviko WhatsApp number add karne ke baad ye button direct WhatsApp kholega.');});
+  });
+})();
+</script>
+
+<!-- ===== PAVIKO PHASE 1: CUSTOMER + WORKER ACCOUNTS ===== -->
+<section id="phase1" class="phase1-section">
+  <div class="section-header">
+    <h2>Join Paviko</h2>
+    <p>Customer ya skilled worker ke roop me Paviko se judein</p>
+  </div>
+
+  <div class="p1-tabs">
+    <button type="button" class="p1-tab active" data-tab="worker">👷 Join as Worker</button>
+    <button type="button" class="p1-tab" data-tab="customer">👤 Customer Account</button>
+  </div>
+
+  <div id="workerPanel" class="p1-panel active">
+    <form id="workerForm" class="p1-form">
+      <div class="p1-grid">
+        <div><label>Full Name</label><input id="wName" required placeholder="Worker ka naam"></div>
+        <div><label>Mobile Number</label><input id="wMobile" required maxlength="10" inputmode="numeric" placeholder="10 digit mobile"></div>
+        <div><label>Service / Skill</label>
+          <select id="wService" required>
+            <option value="">Select Service</option>
+            <option>Electrician</option><option>Plumber</option><option>Carpenter</option>
+            <option>Painter</option><option>Cleaning</option><option>Car/Bike Wash</option>
+            <option>AC Technician</option><option>Tailor</option><option>Raj Mistri</option>
+          </select>
+        </div>
+        <div><label>Sub-skill</label><input id="wSubSkill" placeholder="Example: Fan fitting, wiring"></div>
+        <div><label>City</label><input id="wCity" required placeholder="City"></div>
+        <div><label>Area</label><input id="wArea" required placeholder="Area / locality"></div>
+        <div><label>Experience (years)</label><input id="wExp" type="number" min="0" max="60" placeholder="5"></div>
+        <div><label>Starting Fee (₹)</label><input id="wFee" type="number" min="0" placeholder="200"></div>
+        <div class="p1-full"><label>About / Description</label><textarea id="wAbout" rows="3" placeholder="Apne kaam ke baare me short description"></textarea></div>
+        <div class="p1-full"><label>Profile Photo</label><input id="wProfile" type="file" accept="image/*"></div>
+        <div class="p1-full"><label>Work Photos</label><input id="wPhotos" type="file" accept="image/*" multiple></div>
+        <div class="p1-full"><label>Work Videos</label><input id="wVideos" type="file" accept="video/*" multiple></div>
+      </div>
+      <button class="p1-submit" type="submit">Create Worker Profile</button>
+      <div id="workerMsg" class="p1-message"></div>
+    </form>
+  </div>
+
+  <div id="customerPanel" class="p1-panel">
+    <form id="customerForm" class="p1-form">
+      <div class="p1-grid">
+        <div><label>Full Name</label><input id="cName" required placeholder="Your name"></div>
+        <div><label>Mobile Number</label><input id="cMobile" required maxlength="10" inputmode="numeric" placeholder="10 digit mobile"></div>
+        <div><label>City</label><input id="cCity" required placeholder="City"></div>
+        <div><label>Area</label><input id="cArea" required placeholder="Area / locality"></div>
+        <div class="p1-full"><label>Address</label><textarea id="cAddress" rows="3" required placeholder="Full address"></textarea></div>
+      </div>
+      <button class="p1-submit" type="submit">Create Customer Account</button>
+      <div id="customerMsg" class="p1-message"></div>
+    </form>
+  </div>
+
+  <div id="p1Profiles" class="p1-profiles"></div>
+</section>
+
+<script id="paviko-phase1-js">
+(function(){
+  "use strict";
+  var KEY_W="paviko_phase1_workers", KEY_C="paviko_phase1_customers";
+  function $(id){return document.getElementById(id);}
+  function read(k){try{return JSON.parse(localStorage.getItem(k)||"[]")}catch(e){return[]}}
+  function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+  function val(id){return ($(id)||{}).value||""}
+  function validMobile(v){return /^[6-9][0-9]{9}$/.test(v)}
+
+  function activate(tab){
+    document.querySelectorAll(".p1-tab").forEach(function(b){b.classList.toggle("active",b.dataset.tab===tab)});
+    $("workerPanel").classList.toggle("active",tab==="worker");
+    $("customerPanel").classList.toggle("active",tab==="customer");
+  }
+  document.querySelectorAll(".p1-tab").forEach(function(b){
+    b.addEventListener("click",function(){activate(this.dataset.tab)})
+  });
+
+  function fileNames(input){return Array.from((input&&input.files)||[]).map(function(f){return f.name})}
+
+  $("workerForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    var mobile=val("wMobile").trim();
+    if(!validMobile(mobile)){alert("Valid 10 digit mobile number dalein.");return}
+    var workers=read(KEY_W);
+    var worker={
+      id:"W-"+String(Date.now()).slice(-8),name:val("wName").trim(),mobile:mobile,
+      service:val("wService"),subSkill:val("wSubSkill").trim(),city:val("wCity").trim(),
+      area:val("wArea").trim(),experience:val("wExp"),fee:val("wFee"),
+      about:val("wAbout").trim(),profilePhoto:val("wProfile"),
+      workPhotos:fileNames($("wPhotos")),workVideos:fileNames($("wVideos")),
+      status:"Pending Verification",createdAt:new Date().toISOString()
+    };
+    workers.push(worker);save(KEY_W,workers);
+    $("workerMsg").innerHTML="<div style='padding:14px;background:#e8f5e9;border-radius:9px'>✅ Worker profile created. ID: <b>"+worker.id+"</b><br>Status: <b>Pending Verification</b></div>";
+    this.reset();renderProfiles();
+  });
+
+  $("customerForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    var mobile=val("cMobile").trim();
+    if(!validMobile(mobile)){alert("Valid 10 digit mobile number dalein.");return}
+    var customers=read(KEY_C);
+    var c={id:"C-"+String(Date.now()).slice(-8),name:val("cName").trim(),mobile:mobile,
+      city:val("cCity").trim(),area:val("cArea").trim(),address:val("cAddress").trim(),
+      createdAt:new Date().toISOString()};
+    customers.push(c);save(KEY_C,customers);
+    $("customerMsg").innerHTML="<div style='padding:14px;background:#e8f5e9;border-radius:9px'>✅ Customer account created. ID: <b>"+c.id+"</b></div>";
+    this.reset();
+  });
+
+  function renderProfiles(){
+    var box=$("p1Profiles"), workers=read(KEY_W);
+    if(!workers.length){box.innerHTML="";return}
+    box.innerHTML="<h3 style='grid-column:1/-1'>Worker Profiles (this device)</h3>";
+    workers.forEach(function(w){
+      var d=document.createElement("div");d.className="p1-card";
+      d.innerHTML="<h3>"+w.name+"</h3><p>🛠️ "+w.service+(w.subSkill?" • "+w.subSkill:"")+
+        "</p><p>📍 "+w.city+" • "+w.area+"</p><p>💼 "+(w.experience||0)+" years • ₹"+(w.fee||"—")+" starting</p>"+
+        "<p>"+(w.about||"")+"</p><small>ID: "+w.id+" • "+w.status+"</small>";
+      box.appendChild(d);
+    });
+  }
+  renderProfiles();
+})();
+</script>
+
+
+<section id="paviko-id-system" class="paviko-id-section">
+  <div class="section-header">
+    <h2>Paviko Worker ID</h2>
+    <p>Facebook/Instagram jaisa professional worker profile — kaam, photos aur videos ke saath.</p>
+  </div>
+
+  <div class="paviko-id-box">
+    <form id="pavikoWorkerForm">
+      <div class="paviko-id-grid">
+        <div><label>Full Name *</label><input id="pName" required placeholder="Ramesh Kumar"></div>
+        <div><label>Mobile Number *</label><input id="pMobile" required maxlength="10" inputmode="numeric" placeholder="10 digit mobile"></div>
+        <div><label>Service / Skill *</label>
+          <select id="pService" required>
+            <option value="">Select Service</option>
+            <option>Electrician</option><option>Plumber</option><option>Carpenter</option>
+            <option>Painter</option><option>Cleaning</option><option>Car/Bike Wash</option>
+            <option>AC Technician</option><option>Tailor</option><option>Raj Mistri</option>
+          </select>
+        </div>
+        <div><label>City *</label><input id="pCity" required placeholder="City"></div>
+        <div><label>Area *</label><input id="pArea" required placeholder="Area / locality"></div>
+        <div><label>Experience</label><input id="pExperience" type="number" min="0" max="60" placeholder="5 years"></div>
+        <div><label>Starting Fee (₹)</label><input id="pFee" type="number" min="0" placeholder="200"></div>
+        <div><label>Availability</label>
+          <select id="pAvailability"><option>Available</option><option>Not Available</option></select>
+        </div>
+        <div class="paviko-id-full"><label>About / Work Description</label>
+          <textarea id="pAbout" rows="3" placeholder="Apne kaam aur experience ke baare me"></textarea>
+        </div>
+        <div class="paviko-id-full"><label>Profile Photo</label>
+          <input id="pProfilePhoto" type="file" accept="image/*">
+        </div>
+        <div class="paviko-id-full"><label>Work Photos</label>
+          <input id="pWorkPhotos" type="file" accept="image/*" multiple>
+        </div>
+        <div class="paviko-id-full"><label>Work Videos</label>
+          <input id="pWorkVideos" type="file" accept="video/*" multiple>
+        </div>
+      </div>
+      <button class="paviko-id-submit" type="submit">Create Paviko Worker ID</button>
+      <div id="pavikoIdResult"></div>
+    </form>
+
+    <div class="paviko-my-profiles">
+      <h3>My Worker Profiles</h3>
+      <div id="pavikoProfiles"></div>
+    </div>
+  </div>
+</section>
+
+
+<script id="paviko-id-js">
+(function(){
+  "use strict";
+  var KEY="paviko_worker_profiles_v1";
+  function $(id){return document.getElementById(id)}
+  function read(){try{return JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){return[]}}
+  function save(v){try{localStorage.setItem(KEY,JSON.stringify(v))}catch(e){}}
+  function files(id){return Array.from(($ (id).files)||[]).map(function(f){return f.name})}
+  function mobileOK(v){return /^[6-9][0-9]{9}$/.test(v)}
+
+  function render(){
+    var box=$("pavikoProfiles"), list=read();
+    if(!list.length){box.innerHTML="<p>Abhi koi Worker ID create nahi hui.</p>";return}
+    box.innerHTML=list.map(function(w){
+      return "<div class='paviko-profile-card'>"+
+        "<div class='pid'>"+w.id+"</div>"+
+        "<div class='status'>"+w.status+"</div>"+
+        "<h3>"+w.name+"</h3>"+
+        "<p>🛠️ "+w.service+" &nbsp; 📍 "+w.city+" • "+w.area+"</p>"+
+        "<p>💼 "+(w.experience||0)+" years &nbsp; 💰 ₹"+(w.fee||"—")+" starting</p>"+
+        "<p>🟢 "+w.availability+"</p>"+
+        "<p>"+(w.about||"")+"</p>"+
+        "<small>📷 Photos: "+w.photos.length+" &nbsp; 🎥 Videos: "+w.videos.length+"</small>"+
+        "</div>";
+    }).join("");
+  }
+
+  $("pavikoWorkerForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    var mobile=$("pMobile").value.trim();
+    if(!mobileOK(mobile)){alert("Valid 10 digit mobile number dalein.");return}
+    var list=read();
+    if(list.some(function(w){return w.mobile===mobile})){
+      alert("Is mobile number se Paviko Worker ID already bani hui hai.");
+      return;
+    }
+    var worker={
+      id:"PAV-W-"+String(Date.now()).slice(-8),
+      name:$("pName").value.trim(),mobile:mobile,service:$("pService").value,
+      city:$("pCity").value.trim(),area:$("pArea").value.trim(),
+      experience:$("pExperience").value,fee:$("pFee").value,
+      availability:$("pAvailability").value,about:$("pAbout").value.trim(),
+      profilePhoto:files("pProfilePhoto"),photos:files("pWorkPhotos"),
+      videos:files("pWorkVideos"),status:"Pending Verification",
+      createdAt:new Date().toISOString()
+    };
+    list.push(worker);save(list);
+    $("pavikoIdResult").innerHTML=
+      "<div style='background:#e8f5e9;border:1px solid #4caf50;padding:15px;border-radius:9px'>"+
+      "✅ <b>Paviko ID Ready</b><br>Your ID: <strong>"+worker.id+
+      "</strong><br>Status: <strong>Pending Verification</strong></div>";
+    this.reset();render();
+  });
+  render();
+})();
+</script>
+
+
+<script id="paviko-app-js">
+(function(){
+  "use strict";
+  function $(id){return document.getElementById(id)}
+  function readWorkers(){
+    var keys=["paviko_worker_profiles_v1","paviko_phase1_workers"];
+    for(var i=0;i<keys.length;i++){try{var x=JSON.parse(localStorage.getItem(keys[i])||"[]");if(x.length)return x}catch(e){}}
+    return [];
+  }
+  function readBookings(){
+    var x=[]; try{var b=JSON.parse(localStorage.getItem("paviko_last_booking")||"null");if(b)x.push(b)}catch(e){}
+    return x;
+  }
+  function showSection(id){
+    document.querySelectorAll(".paviko-app-section").forEach(function(s){s.classList.remove("active")});
+    var el=$(id); if(el)el.classList.add("active");
+    window.scrollTo({top:0,behavior:"smooth"});
+    if(id==="paviko-find")renderWorkers();
+    if(id==="paviko-bookings")renderBookings();
+  }
+  document.querySelectorAll("[data-go]").forEach(function(b){
+    b.addEventListener("click",function(){
+      var target=this.dataset.go;
+      if(target==="paviko-home"){window.scrollTo({top:0,behavior:"smooth"});return}
+      showSection(target);
+    });
+  });
+
+  function renderWorkers(){
+    var box=$("workerDiscovery"), q=($("findWorkerSearch").value||"").toLowerCase().trim();
+    var loc=($("findWorkerLocation").value||"").toLowerCase().trim();
+    var workers=readWorkers().filter(function(w){
+      var text=(w.name+" "+w.service+" "+(w.subSkill||"")).toLowerCase();
+      var place=((w.city||"")+" "+(w.area||"")).toLowerCase();
+      return (!q||text.indexOf(q)!==-1) && (!loc||place.indexOf(loc)!==-1);
+    });
+    if(!workers.length){
+      box.innerHTML="<div style='grid-column:1/-1;text-align:center;background:#fff;padding:25px;border-radius:12px'>Abhi matching worker profile nahi mila.</div>";
+      return;
+    }
+    box.innerHTML="";
+    workers.forEach(function(w){
+      var card=document.createElement("div");card.className="pworker-card";
+      card.innerHTML="<div class='pworker-photo'>👷</div><h3>"+w.name+"</h3>"+
+        "<p>🛠️ "+w.service+"</p><p>📍 "+(w.city||"")+" • "+(w.area||"")+"</p>"+
+        "<p>💼 "+(w.experience||0)+" years &nbsp; 💰 ₹"+(w.fee||"—")+" starting</p>"+
+        "<p>🟢 "+(w.availability||"Available")+"</p>"+
+        "<button type='button'>View Profile</button>";
+      card.querySelector("button").addEventListener("click",function(){openWorker(w)});
+      box.appendChild(card);
+    });
+  }
+  function openWorker(w){
+    var c=$("workerProfileContent");
+    c.innerHTML="<div class='pworker-photo'>👷</div><h2>"+w.name+"</h2>"+
+      "<p><b>"+w.id+"</b></p><p>🛠️ "+w.service+" &nbsp; 📍 "+(w.city||"")+" • "+(w.area||"")+"</p>"+
+      "<p>💼 "+(w.experience||0)+" years &nbsp; 💰 ₹"+(w.fee||"—")+" starting</p>"+
+      "<p>🟢 "+(w.availability||"Available")+"</p><h3>About</h3><p>"+(w.about||"Worker ne abhi description nahi diya.")+"</p>"+
+      "<h3>My Work</h3><div class='pwork-gallery'><div>📷 Photos<br><b>"+((w.photos||[]).length)+"</b></div><div>🎥 Videos<br><b>"+((w.videos||[]).length)+"</b></div><div>⭐ Reviews<br><b>Coming soon</b></div></div>"+
+      "<br><button type='button' id='profileBook' style='padding:12px 18px;border:0;border-radius:9px;background:#0b7a45;color:#fff;font-weight:700'>Book Service</button>";
+    $("paviko-worker-modal").classList.add("show");
+    $("paviko-worker-modal").setAttribute("aria-hidden","false");
+    $("profileBook").addEventListener("click",function(){
+      $("paviko-worker-modal").classList.remove("show");
+      var b=document.getElementById("booking");
+      if(b)b.scrollIntoView({behavior:"smooth"});
+    });
+  }
+  $("closeWorkerProfile").addEventListener("click",function(){$("paviko-worker-modal").classList.remove("show")});
+  $("paviko-worker-modal").addEventListener("click",function(e){if(e.target===this)this.classList.remove("show")});
+  ["findWorkerSearch","findWorkerLocation"].forEach(function(id){$(id).addEventListener("input",renderWorkers)});
+
+  function renderBookings(){
+    var box=$("pavikoBookingList"), list=readBookings();
+    if(!list.length){box.innerHTML="<div style='background:#fff;padding:20px;border-radius:12px'>Abhi koi booking nahi hai.</div>";return}
+    box.innerHTML=list.map(function(b){return "<div style='background:#fff;padding:18px;border-radius:12px;margin-bottom:10px'><b>"+(b.bookingId||b.id||"Booking")+"</b><p>"+(b.service||"Service")+" • "+(b.date||"")+" • "+(b.time||"")+"</p><p>"+(b.address||"")+"</p></div>"}).join("");
+  }
+})();
+</script>
+
+
+<!-- ===== PAVIKO PHASE 2: SEARCH -> PROFILE -> BOOKING ===== -->
+<section id="paviko-phase2" class="paviko-p2-section">
+  <div class="paviko-p2-head">
+    <h2>Phase 2 — Book a Worker</h2>
+    <p>Customer service aur location choose karke worker profile dekhe aur booking request bheje.</p>
+  </div>
+
+  <div class="p2-search-box">
+    <div>
+      <label>Service</label>
+      <select id="p2Service">
+        <option value="">All Services</option>
+        <option>Electrician</option><option>Plumber</option><option>Carpenter</option>
+        <option>Painter</option><option>Cleaning</option><option>Car/Bike Wash</option>
+        <option>AC Technician</option><option>Tailor</option><option>Raj Mistri</option>
+      </select>
+    </div>
+    <div>
+      <label>Location / Area</label>
+      <input id="p2Location" placeholder="Example: Ahmedabad / Maninagar">
+    </div>
+    <button type="button" id="p2SearchBtn">Search Workers</button>
+  </div>
+
+  <div id="p2WorkerResults" class="p2-worker-grid"></div>
+
+  <div id="p2BookingModal" class="p2-modal" aria-hidden="true">
+    <div class="p2-modal-box">
+      <button type="button" id="p2Close" class="p2-close">×</button>
+      <div id="p2WorkerSummary"></div>
+      <form id="p2BookingForm">
+        <input type="hidden" id="p2WorkerId">
+        <div class="p2-form-grid">
+          <div><label>Your Name *</label><input id="p2CustomerName" required></div>
+          <div><label>Mobile *</label><input id="p2CustomerMobile" required maxlength="10" inputmode="numeric"></div>
+          <div><label>Service Date *</label><input id="p2Date" type="date" required></div>
+          <div><label>Preferred Time *</label><input id="p2Time" type="time" required></div>
+          <div class="p2-full"><label>Service Address *</label><textarea id="p2Address" rows="3" required placeholder="Kaam kaha karna hai?"></textarea></div>
+          <div class="p2-full"><label>Problem / Work Details</label><textarea id="p2Details" rows="3" placeholder="Kaunsa kaam karwana hai?"></textarea></div>
+        </div>
+        <button class="p2-book-btn" type="submit">Send Booking Request</button>
+        <div id="p2BookingResult"></div>
+      </form>
+    </div>
+  </div>
+
+  <div id="p2MyBookings" class="p2-my-bookings">
+    <h3>My Booking Requests</h3>
+    <div id="p2BookingList"></div>
+  </div>
+</section>
+<!-- ===== END PAVIKO PHASE 2 ===== -->
+
+
+<script id="paviko-phase2-js">
+(function(){
+  "use strict";
+  var BKEY="paviko_phase2_bookings";
+
+  function $(id){return document.getElementById(id)}
+  function workers(){
+    var keys=["paviko_worker_profiles_v1","paviko_phase1_workers"];
+    for(var i=0;i<keys.length;i++){
+      try{var x=JSON.parse(localStorage.getItem(keys[i])||"[]");if(x.length)return x}catch(e){}
+    }
+    return [];
+  }
+  function bookings(){try{return JSON.parse(localStorage.getItem(BKEY)||"[]")}catch(e){return[]}}
+  function saveBookings(x){localStorage.setItem(BKEY,JSON.stringify(x))}
+  function mobileOK(v){return /^[6-9][0-9]{9}$/.test(v)}
+
+  function search(){
+    var s=($("p2Service").value||"").toLowerCase();
+    var l=($("p2Location").value||"").toLowerCase().trim();
+    var list=workers().filter(function(w){
+      var service=(w.service||"").toLowerCase();
+      var place=((w.city||"")+" "+(w.area||"")).toLowerCase();
+      return (!s||service===s) && (!l||place.indexOf(l)!==-1);
+    });
+    var box=$("p2WorkerResults");
+    if(!list.length){
+      box.innerHTML="<div style='grid-column:1/-1;background:#fff;padding:22px;border-radius:12px;text-align:center'>No matching worker found.</div>";
+      return;
+    }
+    box.innerHTML="";
+    list.forEach(function(w){
+      var card=document.createElement("div");
+      card.className="p2-worker-card";
+      card.innerHTML="<div class='p2-worker-avatar'>👷</div>"+
+        "<h3>"+w.name+"</h3><p>🆔 "+w.id+"</p>"+
+        "<p>🛠️ "+w.service+" • 📍 "+(w.city||"")+" "+(w.area||"")+"</p>"+
+        "<p>💼 "+(w.experience||0)+" years • 💰 ₹"+(w.fee||"—")+" starting</p>"+
+        "<p>🟢 "+(w.availability||"Available")+"</p>"+
+        "<button type='button'>View Profile & Book</button>";
+      card.querySelector("button").onclick=function(){openBooking(w)};
+      box.appendChild(card);
+    });
+  }
+
+  function openBooking(w){
+    $("p2WorkerId").value=w.id;
+    $("p2WorkerSummary").innerHTML="<h2>"+w.name+"</h2><p>🆔 "+w.id+"</p>"+
+      "<p>🛠️ "+w.service+" • 📍 "+(w.city||"")+" "+(w.area||"")+"</p>"+
+      "<p>💼 "+(w.experience||0)+" years • 💰 ₹"+(w.fee||"—")+" starting</p>"+
+      "<p>"+(w.about||"")+"</p><hr>";
+    $("p2BookingResult").innerHTML="";
+    $("p2BookingModal").classList.add("show");
+    $("p2BookingModal").setAttribute("aria-hidden","false");
+  }
+
+  function closeBooking(){
+    $("p2BookingModal").classList.remove("show");
+    $("p2BookingModal").setAttribute("aria-hidden","true");
+  }
+
+  $("p2SearchBtn").onclick=search;
+  $("p2Service").onchange=search;
+  $("p2Location").oninput=search;
+  $("p2Close").onclick=closeBooking;
+  $("p2BookingModal").onclick=function(e){if(e.target===this)closeBooking()};
+
+  $("p2BookingForm").onsubmit=function(e){
+    e.preventDefault();
+    var mobile=$("p2CustomerMobile").value.trim();
+    if(!mobileOK(mobile)){alert("Valid 10 digit Indian mobile number dalein.");return}
+    var id="BOOK-"+String(Date.now()).slice(-8);
+    var b={
+      bookingId:id,workerId:$("p2WorkerId").value,
+      customerName:$("p2CustomerName").value.trim(),
+      customerMobile:mobile,date:$("p2Date").value,time:$("p2Time").value,
+      address:$("p2Address").value.trim(),details:$("p2Details").value.trim(),
+      status:"Booking Request Sent",createdAt:new Date().toISOString()
+    };
+    var list=bookings();list.push(b);saveBookings(list);
+    $("p2BookingResult").innerHTML="<div style='background:#e8f5e9;padding:14px;border-radius:9px;margin-top:15px'>"+
+      "✅ Booking request sent.<br>Booking ID: <b>"+id+"</b><br>Status: <b>Booking Request Sent</b></div>";
+    renderBookings();
+  };
+
+  function renderBookings(){
+    var box=$("p2BookingList"), list=bookings();
+    if(!list.length){box.innerHTML="<p>No booking requests yet.</p>";return}
+    box.innerHTML=list.slice().reverse().map(function(b){
+      return "<div class='p2-booking-card'><b>"+b.bookingId+"</b>"+
+        "<p>Worker ID: "+b.workerId+"</p><p>📅 "+b.date+" • ⏰ "+b.time+"</p>"+
+        "<p>📍 "+b.address+"</p><p class='p2-status'>"+b.status+"</p></div>";
+    }).join("");
+  }
+
+  renderBookings();
+  search();
+})();
+</script>
+
+
+<!-- ===== PAVIKO PHASE 3: WORKER BOOKING MANAGEMENT ===== -->
+<section id="paviko-phase3" class="paviko-p3-section">
+  <div class="p3-head">
+    <h2>Phase 3 — Worker Booking Management</h2>
+    <p>Worker apni booking requests dekhe, accept/reject kare aur status update kare.</p>
+  </div>
+
+  <div class="p3-worker-login">
+    <label>Worker Paviko ID</label>
+    <input id="p3WorkerIdInput" placeholder="Example: PAV-W-12345678">
+    <button type="button" id="p3LoadBtn">Open Worker Dashboard</button>
+  </div>
+
+  <div id="p3Dashboard" class="p3-dashboard" style="display:none">
+    <div id="p3WorkerInfo" class="p3-worker-info"></div>
+
+    <div class="p3-stats">
+      <div><b id="p3Pending">0</b><span>Pending</span></div>
+      <div><b id="p3Accepted">0</b><span>Accepted</span></div>
+      <div><b id="p3Completed">0</b><span>Completed</span></div>
+      <div><b id="p3Cancelled">0</b><span>Cancelled</span></div>
+    </div>
+
+    <h3>Booking Requests</h3>
+    <div id="p3BookingRequests"></div>
+  </div>
+</section>
+<!-- ===== END PAVIKO PHASE 3 ===== -->
+
+
+<script id="paviko-phase3-js">
+(function(){
+  "use strict";
+  var BKEY="paviko_phase2_bookings", currentWorker=null;
+
+  function $(id){return document.getElementById(id)}
+  function workers(){
+    var keys=["paviko_worker_profiles_v1","paviko_phase1_workers"];
+    for(var i=0;i<keys.length;i++){
+      try{var x=JSON.parse(localStorage.getItem(keys[i])||"[]");if(x.length)return x}catch(e){}
+    }
+    return [];
+  }
+  function bookings(){try{return JSON.parse(localStorage.getItem(BKEY)||"[]")}catch(e){return[]}}
+  function saveBookings(x){localStorage.setItem(BKEY,JSON.stringify(x))}
+
+  $("p3LoadBtn").onclick=function(){
+    var id=$("p3WorkerIdInput").value.trim().toUpperCase();
+    var w=workers().find(function(x){return String(x.id).toUpperCase()===id});
+    if(!w){alert("Worker ID nahi mila. Pehle valid Paviko Worker ID dalein.");return}
+    currentWorker=w;
+    $("p3Dashboard").style.display="block";
+    render();
+  };
+
+  function render(){
+    if(!currentWorker)return;
+    $("p3WorkerInfo").innerHTML="<h3>👷 "+currentWorker.name+"</h3>"+
+      "<p>🆔 "+currentWorker.id+" &nbsp; 🛠️ "+currentWorker.service+
+      " &nbsp; 📍 "+(currentWorker.city||"")+" • "+(currentWorker.area||"")+"</p>";
+
+    var all=bookings();
+    var mine=all.filter(function(b){return b.workerId===currentWorker.id});
+    var counts={pending:0,accepted:0,completed:0,cancelled:0};
+    mine.forEach(function(b){
+      var s=(b.status||"").toLowerCase();
+      if(s.indexOf("pending")>=0 || s.indexOf("request")>=0)counts.pending++;
+      else if(s.indexOf("accepted")>=0)counts.accepted++;
+      else if(s.indexOf("completed")>=0)counts.completed++;
+      else if(s.indexOf("cancel")>=0 || s.indexOf("reject")>=0)counts.cancelled++;
+    });
+    $("p3Pending").textContent=counts.pending;
+    $("p3Accepted").textContent=counts.accepted;
+    $("p3Completed").textContent=counts.completed;
+    $("p3Cancelled").textContent=counts.cancelled;
+
+    var box=$("p3BookingRequests");
+    if(!mine.length){box.innerHTML="<div class='p3-booking'>Abhi koi booking request nahi hai.</div>";return}
+
+    box.innerHTML="";
+    mine.slice().reverse().forEach(function(b){
+      var card=document.createElement("div");card.className="p3-booking";
+      card.innerHTML="<b>"+b.bookingId+"</b>"+
+        "<p>👤 Customer: "+(b.customerName||"Customer")+"</p>"+
+        "<p>📱 "+(b.customerMobile||"")+"</p>"+
+        "<p>📅 "+b.date+" • ⏰ "+b.time+"</p>"+
+        "<p>📍 "+b.address+"</p>"+
+        "<p>📝 "+(b.details||"No extra details")+"</p>"+
+        "<p class='p3-status'>Status: "+b.status+"</p>";
+
+      var actions=document.createElement("div");actions.className="p3-actions";
+      var status=(b.status||"").toLowerCase();
+
+      if(status.indexOf("request")>=0 || status.indexOf("pending")>=0){
+        actions.innerHTML="<button class='p3-action'>Accept</button><button class='p3-action reject'>Reject</button>";
+        actions.children[0].onclick=function(){update(b.bookingId,"Accepted")};
+        actions.children[1].onclick=function(){update(b.bookingId,"Rejected")};
+      } else if(status.indexOf("accepted")>=0){
+        actions.innerHTML="<button class='p3-action complete'>Mark Completed</button>";
+        actions.children[0].onclick=function(){update(b.bookingId,"Completed")};
+      }
+      if(actions.children.length)card.appendChild(actions);
+      box.appendChild(card);
+    });
+  }
+
+  function update(id,status){
+    var list=bookings();
+    var b=list.find(function(x){return x.bookingId===id});
+    if(!b)return;
+    b.status=status;
+    b.updatedAt=new Date().toISOString();
+    saveBookings(list);
+    render();
+  }
+})();
+</script>
+
+
+<section id="paviko-phase4" class="paviko-p456-section">
+  <div class="p456-head"><h2>Phase 4 — Reviews, Chat & Notifications</h2>
+  <p>Completed work ke baad customer review de sakta hai aur customer-worker communication ka foundation.</p></div>
+
+  <div class="p4-card">
+    <h3>⭐ Rate a Completed Booking</h3>
+    <form id="p4ReviewForm" class="p456-grid">
+      <div><label>Booking ID</label><input id="p4BookingId" required placeholder="BOOK-12345678"></div>
+      <div><label>Rating</label><select id="p4Rating"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></div>
+      <div class="p456-full"><label>Review</label><textarea id="p4Review" rows="3" placeholder="Worker ke kaam ke baare me"></textarea></div>
+      <button class="p456-btn" type="submit">Submit Review</button>
+    </form>
+    <div id="p4ReviewResult"></div>
+  </div>
+
+  <div class="p4-card">
+    <h3>💬 Messages</h3>
+    <div class="p4-chat">
+      <div id="p4Messages" class="p4-messages"></div>
+      <div class="p4-chat-row"><input id="p4Message" placeholder="Message likhein..."><button id="p4Send" class="p456-btn">Send</button></div>
+    </div>
+  </div>
+
+  <div class="p4-card">
+    <h3>🔔 Notifications</h3>
+    <div id="p4Notifications"></div>
+  </div>
+</section>
+
+
+<section id="paviko-phase5" class="paviko-p456-section">
+  <div class="p456-head"><h2>Phase 5 — Payments & Paviko Earning Model</h2>
+  <p>Booking amount, payment status aur Paviko earning — secure payment gateway ke saath.</p></div>
+
+  <div class="p5-card">
+    <h3>💳 Create Payment Record</h3>
+    <form id="p5PaymentForm" class="p456-grid">
+      <div><label>Booking ID</label><input id="p5BookingId" required></div>
+      <div><label>Service Amount (₹)</label><input id="p5Amount" type="number" min="1" required></div>
+      <div><label>Paviko Fee (%)</label><input id="p5FeePct" type="number" min="0" max="100" value="10" required></div>
+      <button class="p456-btn" type="submit">Calculate Payment</button>
+    </form>
+    <div id="p5PaymentResult"></div>
+  </div>
+
+  <div class="p5-card">
+    <h3>📋 Payment Records</h3>
+    <div id="p5Payments"></div>
+  </div>
+</section>
+
+
+<section id="paviko-phase6" class="paviko-p456-section">
+  <div class="p456-head"><h2>Phase 6 — Admin, Security & Production Foundation</h2>
+  <p>Admin controls, role permissions aur production security foundation.</p></div>
+
+  <div class="p6-login">
+    <label>Admin PIN (prototype)</label>
+    <input id="p6Pin" type="password" placeholder="Demo PIN: 2468">
+    <button id="p6Open" class="p456-btn">Open Admin Dashboard</button>
+  </div>
+
+  <div id="p6Dashboard" style="display:none">
+    <div class="p6-stats">
+      <div><b id="p6Workers">0</b><span>Workers</span></div>
+      <div><b id="p6Customers">0</b><span>Customers</span></div>
+      <div><b id="p6Bookings">0</b><span>Bookings</span></div>
+      <div><b id="p6Payments">0</b><span>Payments</span></div>
+    </div>
+
+    <div class="p6-card">
+      <h3>👷 Worker Verification</h3>
+      <div id="p6WorkersList"></div>
+    </div>
+
+    <div class="p6-card">
+      <h3>🛡️ Security Checklist</h3>
+      <ul class="p6-security">
+        <li>HTTPS / SSL — production server par required</li>
+        <li>OTP authentication — production backend me required</li>
+        <li>Role-based access — customer / worker / admin</li>
+        <li>Database access — public direct access nahi</li>
+        <li>Secure media storage — production cloud storage required</li>
+        <li>Rate limiting + input validation</li>
+        <li>Backups + audit logs</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<script id="paviko-p456-js">
+(function(){
+  "use strict";
+  var RKEY="paviko_reviews_v1", PKEY="paviko_payments_v1", MKEY="paviko_messages_v1", NKEY="paviko_notifications_v1";
+  function $(id){return document.getElementById(id)}
+  function get(k){try{return JSON.parse(localStorage.getItem(k)||"[]")}catch(e){return[]}}
+  function put(k,v){localStorage.setItem(k,JSON.stringify(v))}
+  function workers(){try{return JSON.parse(localStorage.getItem("paviko_worker_profiles_v1")||"[]")}catch(e){return[]}}
+  function bookings(){try{return JSON.parse(localStorage.getItem("paviko_phase2_bookings")||"[]")}catch(e){return[]}}
+
+  $("p4ReviewForm").onsubmit=function(e){
+    e.preventDefault();
+    var bid=$("p4BookingId").value.trim(), bs=bookings(), b=bs.find(function(x){return x.bookingId===bid});
+    if(!b){alert("Booking ID nahi mila.");return}
+    if(String(b.status).toLowerCase()!=="completed"){alert("Review sirf completed booking ke liye submit karein.");return}
+    var r=get(RKEY);r.push({bookingId:bid,workerId:b.workerId,rating:Number($("p4Rating").value),review:$("p4Review").value.trim(),createdAt:new Date().toISOString()});put(RKEY,r);
+    $("p4ReviewResult").innerHTML="<div style='padding:12px;background:#e8f5e9;border-radius:8px'>✅ Review submitted.</div>";
+    var n=get(NKEY);n.push({text:"New review submitted for "+b.workerId,createdAt:new Date().toISOString()});put(NKEY,n);renderNotifications();
+  };
+
+  $("p4Send").onclick=function(){
+    var text=$("p4Message").value.trim();if(!text)return;
+    var m=get(MKEY);m.push({text:text,createdAt:new Date().toISOString()});put(MKEY,m);$("p4Message").value="";renderMessages();
+  };
+  function renderMessages(){
+    var box=$("p4Messages"),m=get(MKEY);
+    box.innerHTML=m.length?m.map(function(x){return "<div class='p4-msg'>💬 "+x.text+"</div>"}).join(""):"<small>No messages yet.</small>";
+  }
+  function renderNotifications(){
+    var box=$("p4Notifications"),n=get(NKEY);
+    box.innerHTML=n.length?n.slice().reverse().map(function(x){return "<div class='p4-notification'>🔔 "+x.text+"</div>"}).join(""):"<small>No notifications yet.</small>";
+  }
+  renderMessages();renderNotifications();
+
+  $("p5PaymentForm").onsubmit=function(e){
+    e.preventDefault();
+    var bid=$("p5BookingId").value.trim(),amount=Number($("p5Amount").value),pct=Number($("p5FeePct").value);
+    if(amount<=0||pct<0||pct>100)return;
+    var fee=Math.round(amount*pct/100*100)/100,workerAmount=Math.round((amount-fee)*100)/100;
+    var p={paymentId:"PAY-"+String(Date.now()).slice(-8),bookingId:bid,amount:amount,feePercent:pct,pavikoFee:fee,workerAmount:workerAmount,status:"Prototype Payment Record",createdAt:new Date().toISOString()};
+    var list=get(PKEY);list.push(p);put(PKEY,list);
+    $("p5PaymentResult").innerHTML="<div style='padding:13px;background:#e8f5e9;border-radius:8px'>Service: ₹"+amount+"<br>Paviko fee: ₹"+fee+"<br>Worker amount: ₹"+workerAmount+"<br><b>Payment record created: "+p.paymentId+"</b></div>";
+    renderPayments();
+  };
+  function renderPayments(){
+    var box=$("p5Payments"),list=get(PKEY);
+    box.innerHTML=list.length?list.slice().reverse().map(function(p){return "<div class='p5-payment'><b>"+p.paymentId+"</b><br>Booking: "+p.bookingId+" • Total ₹"+p.amount+" • Paviko ₹"+p.pavikoFee+" • Worker ₹"+p.workerAmount+"</div>"}).join(""):"<small>No payment records yet.</small>";
+  }
+  renderPayments();
+
+  $("p6Open").onclick=function(){
+    if($("p6Pin").value!=="2468"){alert("Demo PIN incorrect.");return}
+    $("p6Dashboard").style.display="block";renderAdmin();
+  };
+  function renderAdmin(){
+    var ws=workers(),cs=[];try{cs=JSON.parse(localStorage.getItem("paviko_phase1_customers")||"[]")}catch(e){}
+    var bs=bookings(),ps=get(PKEY);
+    $("p6Workers").textContent=ws.length;$("p6Customers").textContent=cs.length;$("p6Bookings").textContent=bs.length;$("p6Payments").textContent=ps.length;
+    var box=$("p6WorkersList");
+    box.innerHTML=ws.length?ws.map(function(w,i){return "<div class='p6-worker'><b>"+w.id+"</b> — "+w.name+" — "+w.service+" — "+(w.status||"Pending Verification")+
+      " <button onclick='window.pavikoVerify("+i+")'>Approve</button><button onclick='window.pavikoReject("+i+")'>Reject</button></div>"}).join(""):"No workers.";
+  }
+  window.pavikoVerify=function(i){var ws=workers();ws[i].status="Verified";localStorage.setItem("paviko_worker_profiles_v1",JSON.stringify(ws));renderAdmin()}
+  window.pavikoReject=function(i){var ws=workers();ws[i].status="Rejected";localStorage.setItem("paviko_worker_profiles_v1",JSON.stringify(ws));renderAdmin()}
+})();
+</script>
+
+
+<script id="paviko-navigation-js">
+(function(){
+  "use strict";
+  function $(id){return document.getElementById(id)}
+  var menu=$("paviko-menu-panel");
+  $("paviko-menu-btn").onclick=function(){menu.classList.toggle("open")};
+  document.addEventListener("click",function(e){
+    if(!e.target.closest(".paviko-quick-nav"))menu.classList.remove("open");
+  });
+
+  function hideAll(){
+    document.querySelectorAll(".paviko-app-section,.paviko-p2-section,.paviko-p3-section,.paviko-p456-section,.p7-section")
+      .forEach(function(x){x.style.display="none"});
+  }
+  function go(type){
+    menu.classList.remove("open");
+    hideAll();
+    var target=null;
+    if(type==="home"){window.scrollTo({top:0,behavior:"smooth"});return}
+    if(type==="find")target=document.getElementById("paviko-find");
+    if(type==="p1")target=document.getElementById("paviko-account")||document.querySelector(".paviko-app-section");
+    if(type==="p2")target=document.getElementById("paviko-phase2");
+    if(type==="p3")target=document.getElementById("paviko-phase3");
+    if(type==="p4")target=document.getElementById("paviko-phase4");
+    if(type==="p5")target=document.getElementById("paviko-phase5");
+    if(type==="p6")target=document.getElementById("paviko-phase6");
+    if(type==="p7")target=document.getElementById("paviko-phase7");
+    if(type==="sponsor")target=document.getElementById("paviko-sponsor");
+    if(type==="help")target=document.getElementById("paviko-help");
+    if(target){target.style.display="block";target.scrollIntoView({behavior:"smooth",block:"start"})}
+    document.querySelectorAll(".paviko-phase-switcher button").forEach(function(b){b.classList.toggle("active",b.dataset.phase===type)})
+  }
+  document.querySelectorAll("[data-pnav]").forEach(function(b){b.onclick=function(){go(this.dataset.pnav)}});
+  document.querySelectorAll("[data-phase]").forEach(function(b){b.onclick=function(){go(this.dataset.phase)}});
+  // Keep only the main starting content visible until a menu/phase is selected.
+  document.querySelectorAll(".paviko-app-section,.paviko-p2-section,.paviko-p3-section,.paviko-p456-section,.p7-section").forEach(function(x){
+    if(!x.classList.contains("active")) x.style.display="";
+  });
+})();
+</script>
+
+
+<section id="paviko-phase7" class="p7-section">
+  <div class="p7-head">
+    <h2>Phase 7 — Real Website Foundation</h2>
+    <p>OTP, accounts, database, media storage aur secure backend ko connect karne ke liye production foundation.</p>
+  </div>
+
+  <div class="p7-grid">
+    <div class="p7-card">
+      <h3>📱 Account Login</h3>
+      <select id="p7Role"><option value="customer">Customer</option><option value="worker">Worker</option></select>
+      <input id="p7Mobile" inputmode="numeric" maxlength="10" placeholder="10 digit mobile number">
+      <button id="p7SendOtp">Send OTP</button>
+      <div id="p7OtpArea" style="display:none">
+        <input id="p7Otp" inputmode="numeric" maxlength="6" placeholder="Enter OTP">
+        <button id="p7VerifyOtp">Verify OTP</button>
+      </div>
+      <div id="p7AuthResult"></div>
+    </div>
+
+    <div class="p7-card">
+      <h3>☁️ Photo / Video Upload</h3>
+      <input id="p7Media" type="file" accept="image/*,video/*" multiple>
+      <div id="p7MediaPreview"></div>
+      <p class="p7-note">Backend upload ready. Files are stored on the Paviko server with validation and access controls.</p>
+    </div>
+
+    <div class="p7-card">
+      <h3>🗄️ Data Status</h3>
+      <div class="p7-check">Frontend UI <b>Ready</b></div>
+      <div class="p7-check">Local prototype data <b>Ready</b></div>
+      <div class="p7-check">Real database <b>Connected</b></div>
+      <div class="p7-check">Real OTP SMS <b>Twilio-ready</b></div>
+      <div class="p7-check">Real media storage <b>Server storage connected</b></div>
+      <div class="p7-check">Real payments <b>Razorpay-ready</b></div>
+    </div>
+
+    <div class="p7-card">
+      <h3>🔐 Production Security</h3>
+      <ul>
+        <li>HTTPS</li><li>Server-side authentication</li><li>Role-based permissions</li>
+        <li>Input validation</li><li>Rate limiting</li><li>Secure file validation</li>
+        <li>Private database credentials</li><li>Backups and audit logs</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<script id="paviko-phase7-js">
+(function(){
+"use strict";
+var otp=""; function $(id){return document.getElementById(id)}
+function validMobile(v){return /^[6-9][0-9]{9}$/.test(v)}
+$("p7SendOtp").onclick=function(){
+  var m=$("p7Mobile").value.trim();
+  if(!validMobile(m)){alert("Valid 10 digit Indian mobile number dalein.");return}
+  otp=String(Math.floor(100000+Math.random()*900000));
+  $("p7OtpArea").style.display="block";
+  $("p7AuthResult").innerHTML="<div style='padding:10px;background:#fff3cd;border-radius:8px'>Demo OTP: <b>"+otp+"</b><br><small>Real SMS OTP ke liye backend/SMS provider connect karna hoga.</small></div>";
+};
+$("p7VerifyOtp").onclick=function(){
+  if($("p7Otp").value.trim()!==otp){alert("OTP incorrect.");return}
+  var role=$("p7Role").value;
+  var profile={role:role,mobile:$("p7Mobile").value.trim(),loginAt:new Date().toISOString()};
+  localStorage.setItem("paviko_current_session",JSON.stringify(profile));
+  $("p7AuthResult").innerHTML="<div style='padding:10px;background:#e8f5e9;border-radius:8px'>✅ Prototype login successful as <b>"+role+"</b>.</div>";
+};
+$("p7Media").onchange=function(){
+  var box=$("p7MediaPreview");box.innerHTML="";
+  Array.from(this.files).forEach(function(f){
+    var item=document.createElement("div");item.className="p7-media-item";
+    var label=document.createElement("div");label.textContent=f.name;item.appendChild(label);
+    if(f.type.startsWith("image/")){var img=document.createElement("img");img.src=URL.createObjectURL(f);item.appendChild(img)}
+    else if(f.type.startsWith("video/")){var v=document.createElement("video");v.src=URL.createObjectURL(f);v.controls=true;item.appendChild(v)}
+    box.appendChild(item);
+  });
+};
+})();
+</script>
+
+
+<section id="paviko-sponsor" class="paviko-sponsor-section">
+  <div class="p7-head">
+    <h2>📢 Paviko Sponsored Businesses</h2>
+    <p>Local shops aur businesses apna sponsored digital profile bana sakte hain.</p>
+  </div>
+
+  <div class="paviko-sponsor-card">
+    <div class="paviko-sponsored-label">📢 SPONSORED</div>
+    <h3 id="demoShopName">Sharma Hardware</h3>
+    <p>📍 Main Road, Bhilad</p>
+    <p>🛍️ Cement • Paint • Pipes • Hardware</p>
+    <p>🛠️ Home Delivery • Bulk Order • Digital Payment</p>
+    <p>🕐 9:00 AM – 8:00 PM</p>
+    <div class="paviko-sponsor-actions">
+      <button>👁️ View Shop</button>
+      <button>📞 Call</button>
+      <button>💬 WhatsApp</button>
+      <button>🗺️ Directions</button>
+    </div>
+  </div>
+
+  <div class="paviko-sponsor-card">
+    <div class="paviko-sponsored-label">📢 SPONSORED • ELECTRICAL</div>
+    <h3>ABC Electrical Store</h3>
+    <p>📍 Near your location</p>
+    <p>🛍️ Wires • Switches • Fans • LED</p>
+    <div class="paviko-sponsor-actions">
+      <button>View Products</button><button>📞 Call</button><button>🗺️ Directions</button>
+    </div>
+  </div>
+
+  <div class="paviko-sponsor-form">
+    <h3>🏪 Sponsor Business Profile</h3>
+    <div class="paviko-sponsor-grid">
+      <input id="spName" placeholder="Shop / Business Name">
+      <input id="spCategory" placeholder="Business Category">
+      <input id="spPhone" placeholder="Phone / WhatsApp">
+      <input id="spLocation" placeholder="Shop Location / Address">
+      <input id="spMap" placeholder="Google Maps link (optional)">
+      <input id="spHours" placeholder="Opening & Closing Time">
+      <textarea id="spProducts" placeholder="Products"></textarea>
+      <textarea id="spFacilities" placeholder="Facilities / Services"></textarea>
+      <textarea id="spDescription" placeholder="Business Description"></textarea>
+      <input id="spPhotos" type="file" accept="image/*" multiple>
+      <input id="spVideo" type="file" accept="video/*">
+    </div>
+    <p class="paviko-sponsor-note">Business profile me photos, products, facilities, location, timing aur contact options show kiye ja sakte hain.</p>
+    <h4>💰 Sponsor Plans</h4>
+    <div class="paviko-plans">
+      <label><input type="radio" name="splan" value="499" checked> ₹499 / 1 Month</label>
+      <label><input type="radio" name="splan" value="1299"> ₹1,299 / 3 Months ⭐ Popular</label>
+      <label><input type="radio" name="splan" value="3999"> ₹3,999 / 12 Months</label>
+    </div>
+    <button id="spSave" class="paviko-sponsor-save">Save Sponsor Profile</button>
+    <div id="spResult"></div>
+  </div>
+
+  <div class="paviko-sponsor-card">
+    <h3>📍 Relevant Sponsored Ads</h3>
+    <p>Electrician search → Electrical shop sponsor</p>
+    <p>Plumber search → Plumbing material sponsor</p>
+    <p>Car wash search → Auto/car-care sponsor</p>
+    <p>Customer location ke hisaab se nearby relevant sponsors ko priority di ja sakti hai.</p>
+  </div>
+</section>
+
+
+<script id="paviko-sponsor-js">
+(function(){
+  "use strict";
+  function $(id){return document.getElementById(id)}
+  $("spSave").onclick=function(){
+    var name=$("spName").value.trim();
+    if(!name){alert("Business name dalein.");return}
+    var plan=document.querySelector('input[name="splan"]:checked').value;
+    var data={
+      id:"SP-"+String(Date.now()).slice(-8),name:name,category:$("spCategory").value,
+      phone:$("spPhone").value,location:$("spLocation").value,map:$("spMap").value,
+      hours:$("spHours").value,products:$("spProducts").value,facilities:$("spFacilities").value,
+      description:$("spDescription").value,plan:plan,createdAt:new Date().toISOString()
+    };
+    var list=[];try{list=JSON.parse(localStorage.getItem("paviko_sponsors_v1")||"[]")}catch(e){}
+    list.push(data);localStorage.setItem("paviko_sponsors_v1",JSON.stringify(list));
+    $("spResult").innerHTML="<div style='margin-top:12px;padding:12px;background:#e8f5e9;border-radius:8px'>✅ Sponsor profile saved. Sponsor ID: <b>"+data.id+"</b><br>Selected plan: ₹"+plan+"</div>";
+  };
+})();
+</script>
+
+
+<script id="paviko-unified-controller">
+(function(){
+"use strict";
+function byId(x){return document.getElementById(x)}
+function all(sel){return document.querySelectorAll(sel)}
+var sectionMap={
+ home:["paviko-home"],
+ find:["paviko-find"],
+ bookings:["paviko-bookings"],
+ account:["paviko-account"],
+ help:["paviko-help"],
+ settings:["paviko-settings"],
+ p1:["phase1"],
+ p2:["paviko-phase2"],
+ p3:["paviko-phase3"],
+ p4:["paviko-phase4"],
+ p5:["paviko-phase5"],
+ p6:["paviko-phase6"],
+ p7:["paviko-phase7"],
+ sponsor:["paviko-sponsor"],
+ premium:["paviko-current-pricing"]
+};
+function hideAll(){
+  Object.keys(sectionMap).forEach(function(k){
+    sectionMap[k].forEach(function(id){
+      var x=byId(id); if(x) x.style.display="none";
+    });
+  });
+}
+function show(type){
+  hideAll();
+  var ids=sectionMap[type]||[];
+  var target=null;
+  ids.some(function(id){target=byId(id);return !!target});
+  if(target){
+    target.style.display="";
+    target.classList.add("active");
+    setTimeout(function(){target.scrollIntoView({behavior:"smooth",block:"start"})},10);
+  }
+  all(".paviko-phase-switcher button").forEach(function(b){
+    b.classList.toggle("active",b.dataset.phase===type);
+  });
+}
+function closeMenu(){var x=byId("paviko-menu-panel");if(x)x.style.display="none"}
+function openMenu(){var x=byId("paviko-menu-panel");if(x)x.style.display="block"}
+function bind(){
+  var menu=byId("paviko-menu-btn");
+  if(menu)menu.onclick=function(e){e.stopPropagation();var x=byId("paviko-menu-panel");if(x)x.style.display=x.style.display==="block"?"none":"block"};
+  all("[data-pnav]").forEach(function(b){b.onclick=function(){show(b.dataset.pnav);closeMenu()}});
+  all("[data-phase]").forEach(function(b){b.onclick=function(){show(b.dataset.phase);closeMenu()}});
+  all("[data-go]").forEach(function(b){b.onclick=function(){show((b.dataset.go||"").replace("paviko-",""));}});
+  all("[data-money]").forEach(function(b){b.onclick=function(){show(b.dataset.money);}});
+  var homeBtns=document.querySelectorAll('[data-go="paviko-home"]');
+  if(homeBtns.length) homeBtns.forEach(function(b){b.onclick=function(){show("home")}});
+  // Bottom navigation aliases if present.
+  var bottom=document.querySelector(".pro-bottom");
+  if(bottom){
+    var bs=bottom.querySelectorAll("button");
+    if(bs[0])bs[0].onclick=function(){show("home")};
+    if(bs[1])bs[1].onclick=function(){show("find")};
+    if(bs[2])bs[2].onclick=function(){show("bookings")};
+    if(bs[3])bs[3].onclick=function(){show("p4")};
+    if(bs[4])bs[4].onclick=function(){show("account")};
+  }
+  document.addEventListener("click",function(e){
+    var p=byId("paviko-menu-panel"), m=byId("paviko-menu-btn");
+    if(p && p.style.display==="block" && !p.contains(e.target) && e.target!==m) p.style.display="none";
+  });
+  show("home");
+}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",bind);else bind();
+})();
+</script>
+
+
+<script id="paviko-final-navigation-fix">
+(function(){
+  function show(id){
+    var target=document.getElementById(id);
+    if(!target) return false;
+    document.querySelectorAll(
+      ".paviko-app-section,.paviko-p2-section,.paviko-p3-section,.paviko-p456-section,.p7-section"
+    ).forEach(function(x){x.style.display="none";});
+    target.style.display="block";
+    target.scrollIntoView({behavior:"smooth",block:"start"});
+    return true;
+  }
+
+  function bind(){
+    // Phase buttons
+    document.querySelectorAll("[data-phase]").forEach(function(b){
+      b.addEventListener("click",function(e){
+        e.preventDefault();
+        var n=this.getAttribute("data-phase");
+        var map={p1:"phase1",p2:"paviko-phase2",p3:"paviko-phase3",
+                 p4:"paviko-phase4",p5:"paviko-phase5",p6:"paviko-phase6",
+                 p7:"paviko-phase7",sponsor:"paviko-sponsor"};
+        show(map[n]||n);
+      });
+    });
+
+    // Main navigation buttons
+    document.querySelectorAll("[data-pnav]").forEach(function(b){
+      b.addEventListener("click",function(e){
+        e.preventDefault();
+        var n=this.getAttribute("data-pnav");
+        var map={home:"paviko-home",find:"paviko-find",bookings:"paviko-bookings",
+                 account:"paviko-account",help:"paviko-help",settings:"paviko-settings",
+                 p1:"phase1",p2:"paviko-phase2",p3:"paviko-phase3",
+                 p4:"paviko-phase4",p5:"paviko-phase5",p6:"paviko-phase6",
+                 p7:"paviko-phase7",sponsor:"paviko-sponsor"};
+        show(map[n]||n);
+      });
+    });
+
+    // Bottom navigation: Home / Find / My Booking / Messages / Profile
+    var bottom=document.querySelector(".pro-bottom");
+    if(bottom){
+      var b=bottom.querySelectorAll("button");
+      if(b[0]) b[0].onclick=function(){show("paviko-home")};
+      if(b[1]) b[1].onclick=function(){show("paviko-find")};
+      if(b[2]) b[2].onclick=function(){show("paviko-bookings")};
+      if(b[3]) b[3].onclick=function(){show("paviko-phase4")};
+      if(b[4]) b[4].onclick=function(){show("paviko-account")};
+    }
+  }
+
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",bind);
+  else bind();
+})();
+</script>
+
+</div>
+
+<script id="paviko-reference-controller">
+(function(){
+  function hideOld(){
+    document.querySelectorAll(".paviko-app-section,.paviko-p2-section,.paviko-p3-section,.paviko-p456-section,.p7-section").forEach(function(x){x.style.display="none";});
+  }
+  function open(name){
+    hideOld();
+    var map={find:"paviko-find",bookings:"paviko-bookings",profile:"paviko-account",
+             messages:"paviko-phase4",p1:"phase1",p2:"paviko-phase2",p3:"paviko-phase3",
+             p4:"paviko-phase4",p5:"paviko-phase5",p6:"paviko-phase6",p7:"paviko-phase7",
+             sponsor:"paviko-sponsor"};
+    if(name==="home"){document.getElementById("paviko-ref-home").style.display="block";return;}
+    var x=document.getElementById(map[name]||name);
+    if(x){x.style.display="block";x.scrollIntoView({behavior:"smooth",block:"start"});}
+  }
+  function bind(){
+    var menu=document.getElementById("paviko-ref-menu"), panel=document.getElementById("paviko-ref-menu-panel");
+    menu.onclick=function(e){e.stopPropagation();panel.style.display=panel.style.display==="block"?"none":"block";};
+    document.addEventListener("click",function(e){if(panel.style.display==="block"&&!panel.contains(e.target)&&e.target!==menu)panel.style.display="none";});
+    document.querySelectorAll("[data-ref-go]").forEach(function(b){
+      b.onclick=function(){open(b.getAttribute("data-ref-go"));panel.style.display="none";
+        document.querySelectorAll(".paviko-ref-bottom button").forEach(function(x){x.classList.remove("active");});
+        document.querySelectorAll('.paviko-ref-bottom button[data-ref-go="'+b.getAttribute("data-ref-go")+'"]').forEach(function(x){x.classList.add("active");});
+      };
+    });
+    document.querySelectorAll(".paviko-ref-service").forEach(function(b){
+      b.onclick=function(){
+        var input=document.getElementById("findWorkerSearch");
+        if(input) input.value=b.getAttribute("data-service")==="More"?"":b.getAttribute("data-service");
+        open("find");
+      };
+    });
+    document.getElementById("paviko-ref-search-btn").onclick=function(){
+      var v=document.getElementById("paviko-ref-search-input").value;
+      var input=document.getElementById("findWorkerSearch");
+      if(input) input.value=v;
+      open("find");
+    };
+    document.getElementById("paviko-ref-settings").onclick=function(){open("settings");};
+    document.getElementById("paviko-ref-notify").onclick=function(){open("messages");};
+  }
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",bind);else bind();
+})();
+</script>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script id="paviko-real-backend-bridge">
+(function(){
+'use strict';
+const API='';
+const $=id=>document.getElementById(id);
+async function api(url,opt={}){
+  opt.credentials='include'; opt.headers=opt.headers||{};
+  if(opt.body && !(opt.body instanceof FormData)) { opt.headers['Content-Type']='application/json'; opt.body=JSON.stringify(opt.body); }
+  const r=await fetch(API+url,opt); let d={}; try{d=await r.json()}catch(e){}
+  if(!r.ok) throw new Error(d.error||('Request failed: '+r.status)); return d;
+}
+function msg(id,text,ok=true){const x=$(id);if(x)x.innerHTML='<div style="padding:12px;border-radius:9px;background:'+(ok?'#e8f5e9':'#ffebee')+'">'+text+'</div>';}
+function validMobile(v){return /^[6-9]\d{9}$/.test(v)}
+
+// ---------- Phase 7: real OTP/session ----------
+if($('p7SendOtp')) $('p7SendOtp').onclick=async()=>{
+  const mobile=$('p7Mobile').value.trim(), role=$('p7Role').value;
+  if(!validMobile(mobile)){alert('Valid 10 digit Indian mobile number dalein.');return}
+  try{await api('/api/auth/send-otp',{method:'POST',body:{mobile,role}});$('p7OtpArea').style.display='block';msg('p7AuthResult','📱 OTP sent. OTP enter karke verify karein.');}
+  catch(e){msg('p7AuthResult','❌ '+e.message,false)}
+};
+if($('p7VerifyOtp')) $('p7VerifyOtp').onclick=async()=>{
+  const mobile=$('p7Mobile').value.trim(),role=$('p7Role').value,otp=$('p7Otp').value.trim();
+  try{const d=await api('/api/auth/verify-otp',{method:'POST',body:{mobile,role,otp}});msg('p7AuthResult','✅ Real login successful as <b>'+d.user.role+'</b>. Mobile: '+d.user.mobile);window.pavikoCurrentUser=d.user;}
+  catch(e){msg('p7AuthResult','❌ '+e.message,false)}
+};
+
+// ---------- Phase 1: real worker/customer accounts + media ----------
+if($('workerForm')) $('workerForm').onsubmit=async(e)=>{
+  e.preventDefault();
+  if(!validMobile($('wMobile').value.trim())){alert('Valid 10 digit Indian mobile number dalein.');return}
+  const fd=new FormData();
+  [['name','wName'],['mobile','wMobile'],['service','wService'],['subSkill','wSubSkill'],['city','wCity'],['area','wArea'],['experience','wExp'],['fee','wFee'],['about','wAbout']].forEach(([k,id])=>fd.append(k,$(id).value));
+  if($('wProfile').files[0])fd.append('profilePhoto',$('wProfile').files[0]);
+  [...$('wPhotos').files].forEach(f=>fd.append('workPhotos',f)); [...$('wVideos').files].forEach(f=>fd.append('workVideos',f));
+  try{const d=await api('/api/workers/profile',{method:'POST',body:fd});msg('workerMsg','✅ Worker profile created. ID: <b>'+d.worker.worker_id+'</b><br>Status: <b>'+d.worker.status+'</b>');$('workerForm').reset();}
+  catch(e){msg('workerMsg','❌ '+e.message,false)}
+};
+if($('customerForm')) $('customerForm').onsubmit=async(e)=>{
+  e.preventDefault();
+  const mobile=$('cMobile').value.trim(); if(!validMobile(mobile)){alert('Valid 10 digit Indian mobile number dalein.');return}
+  try{const me=await api('/api/auth/me');
+    const d=await api('/api/auth/profile',{method:'PATCH',body:{name:$('cName').value.trim(),mobile,city:$('cCity').value.trim(),area:$('cArea').value.trim(),address:$('cAddress').value.trim()}});
+    msg('customerMsg','✅ Customer account saved. ID: <b>'+d.user.id+'</b>');$('customerForm').reset();
+  }catch(e){msg('customerMsg','❌ Pehle Phase 7 se customer OTP login karein, phir account details save karein. '+e.message,false)}
+};
+
+// ---------- Worker discovery ----------
+async function loadWorkers(){
+  try{
+    const q=($('findWorkerSearch')?.value||'').trim(),city=($('findWorkerLocation')?.value||'').trim();
+    const d=await api('/api/workers?q='+encodeURIComponent(q)+'&city='+encodeURIComponent(city));
+    const box=$('workerDiscovery'); if(!box)return;
+    box.innerHTML=d.workers.length?d.workers.map(w=>`<div class="paviko-worker-card"><div class="paviko-worker-avatar">👷</div><h3>${esc(w.name||'Worker')}</h3><p>🆔 ${esc(w.worker_id)}</p><p>🛠️ ${esc(w.service)} • 📍 ${esc(w.city)} ${esc(w.area)}</p><p>💼 ${w.experience||0} years • 💰 ₹${w.fee||'—'} starting</p><button type="button" data-worker="${esc(w.worker_id)}">View Profile & Book</button></div>`).join(''):'<div style="background:#fff;padding:22px;border-radius:12px;text-align:center">No matching worker found.</div>';
+    box.querySelectorAll('[data-worker]').forEach(b=>b.onclick=()=>openWorkerReal(b.dataset.worker));
+  }catch(e){console.warn(e)}
+}
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+async function openWorkerReal(id){
+  try{const d=await api('/api/workers/'+encodeURIComponent(id)); const w=d.worker;
+    // Use existing profile modal if present; otherwise use phase2 modal.
+    if($('p2BookingModal')){ $('p2WorkerId').value=w.worker_id; $('p2WorkerSummary').innerHTML=`<h2>${esc(w.name)}</h2><p>🆔 ${esc(w.worker_id)}</p><p>🛠️ ${esc(w.service)} • 📍 ${esc(w.city)} ${esc(w.area)}</p><p>💼 ${w.experience||0} years • 💰 ₹${w.fee||'—'} starting</p><p>${esc(w.about||'')}</p><div style="display:flex;gap:8px;flex-wrap:wrap">${(w.media||[]).map(m=>m.kind==='image'?`<img src="${m.url}" style="width:80px;height:60px;object-fit:cover;border-radius:8px">`:`<video src="${m.url}" controls style="width:120px;height:70px;border-radius:8px"></video>`).join('')}</div><hr>`; $('p2BookingResult').innerHTML=''; $('p2BookingModal').classList.add('show'); }
+  }catch(e){alert(e.message)}
+}
+if($('findWorkerSearch')) { $('findWorkerSearch').oninput=loadWorkers; $('findWorkerLocation').oninput=loadWorkers; }
+
+// ---------- Phase 2: real bookings ----------
+if($('p2SearchBtn')) $('p2SearchBtn').onclick=async()=>{
+  const s=$('p2Service').value,l=$('p2Location').value; try{const d=await api('/api/workers?service='+encodeURIComponent(s)+'&city='+encodeURIComponent(l));const box=$('p2WorkerResults');box.innerHTML=d.workers.length?d.workers.map(w=>`<div class="p2-worker-card"><div class="p2-worker-avatar">👷</div><h3>${esc(w.name)}</h3><p>🆔 ${esc(w.worker_id)}</p><p>🛠️ ${esc(w.service)} • 📍 ${esc(w.city)} ${esc(w.area)}</p><p>💼 ${w.experience||0} years • 💰 ₹${w.fee||'—'} starting</p><button type="button" data-w="${esc(w.worker_id)}">View Profile & Book</button></div>`).join(''):'<div style="grid-column:1/-1;background:#fff;padding:22px;border-radius:12px;text-align:center">No matching worker found.</div>';box.querySelectorAll('[data-w]').forEach(b=>b.onclick=()=>openWorkerReal(b.dataset.w));}catch(e){alert(e.message)}
+};
+if($('p2BookingForm')) $('p2BookingForm').onsubmit=async(e)=>{
+  e.preventDefault();
+  try{const d=await api('/api/bookings',{method:'POST',body:{workerId:$('p2WorkerId').value,service:$('p2Service').value,date:$('p2Date').value,time:$('p2Time').value,address:$('p2Address').value.trim(),details:$('p2Details').value.trim()}});msg('p2BookingResult','✅ Real booking request sent. Booking ID: <b>'+d.booking.booking_id+'</b>');loadBookings();}
+  catch(e){msg('p2BookingResult','❌ '+e.message+' — customer OTP login required.',false)}
+};
+async function loadBookings(){try{const d=await api('/api/bookings');const boxes=[$('p2BookingList'),$('pavikoBookingList')].filter(Boolean);boxes.forEach(box=>box.innerHTML=d.bookings.length?d.bookings.map(b=>`<div class="p2-booking-card"><b>${esc(b.booking_id)}</b><p>Worker: ${esc(b.worker_id)}</p><p>📅 ${esc(b.date)} • ⏰ ${esc(b.time)}</p><p>📍 ${esc(b.address)}</p><p class="p2-status">${esc(b.status)}</p></div>`).join(''):'<p>No bookings yet.</p>')}catch(e){}}
+loadBookings();loadWorkers();
+
+// ---------- Phase 3: real worker status updates ----------
+if($('p3LoadBtn')) $('p3LoadBtn').onclick=async()=>{
+  try{const d=await api('/api/bookings');const box=$('p3BookingsList')||$('p3BookingList')||document.getElementById('p3List');if(!box)return;box.innerHTML=d.bookings.map(b=>`<div style="background:#fff;padding:14px;border-radius:10px;margin:8px 0"><b>${esc(b.booking_id)}</b> — ${esc(b.status)}<p>${esc(b.customer_name||'Customer')} • ${esc(b.date)} ${esc(b.time)}</p><button data-s="Accepted" data-id="${esc(b.booking_id)}">Accept</button> <button data-s="Rejected" data-id="${esc(b.booking_id)}">Reject</button> <button data-s="Completed" data-id="${esc(b.booking_id)}">Complete</button></div>`).join('');box.querySelectorAll('[data-id]').forEach(x=>x.onclick=async()=>{try{await api('/api/bookings/'+encodeURIComponent(x.dataset.id)+'/status',{method:'PATCH',body:{status:x.dataset.s}});$('p3LoadBtn').click()}catch(e){alert(e.message)}})}catch(e){alert(e.message)}};
+
+// ---------- Phase 4: real reviews + Socket.IO chat ----------
+let socket=null;
+async function connectChat(){
+  if(socket)return socket;
+  try{await api('/api/auth/me');socket=io({withCredentials:true});socket.on('connect',()=>{const bid=$('p4BookingId')?.value.trim();if(bid)socket.emit('joinBooking',bid)});socket.on('message',m=>{const box=$('p4Messages');if(box){const d=document.createElement('div');d.className='p4-msg';d.textContent='💬 '+m.text;box.appendChild(d);box.scrollTop=box.scrollHeight}});return socket;}catch(e){return null}
+}
+if($('p4ReviewForm')) $('p4ReviewForm').onsubmit=async(e)=>{e.preventDefault();try{await api('/api/reviews',{method:'POST',body:{bookingId:$('p4BookingId').value.trim(),rating:Number($('p4Rating').value),review:$('p4Review').value.trim()}});msg('p4ReviewResult','✅ Review saved to database.');}catch(e){msg('p4ReviewResult','❌ '+e.message,false)}};
+if($('p4Send')) $('p4Send').onclick=async()=>{const bid=$('p4BookingId').value.trim(),text=$('p4Message').value.trim();if(!bid||!text)return;const s=await connectChat();if(!s){alert('Customer/worker login required.');return}s.emit('joinBooking',bid);s.emit('message',{bookingId:bid,text});$('p4Message').value='';};
+if($('p4BookingId')) $('p4BookingId').addEventListener('change',()=>connectChat());
+
+// ---------- Phase 5: real Razorpay ----------
+if($('p5PaymentForm')) $('p5PaymentForm').onsubmit=async(e)=>{e.preventDefault();try{const d=await api('/api/payments/order',{method:'POST',body:{bookingId:$('p5BookingId').value.trim(),amount:Number($('p5Amount').value),feePercent:Number($('p5FeePct').value)}});if(!window.Razorpay){const sc=document.createElement('script');sc.src='https://checkout.razorpay.com/v1/checkout.js';document.head.appendChild(sc);await new Promise(r=>sc.onload=r);}const rzp=new Razorpay({key:d.keyId,amount:d.order.amount,currency:d.order.currency,name:'Paviko',description:'Paviko Service Booking',order_id:d.order.id,handler:async function(resp){try{await api('/api/payments/verify',{method:'POST',body:{orderId:resp.razorpay_order_id,paymentId:resp.razorpay_payment_id,signature:resp.razorpay_signature}});msg('p5PaymentResult','✅ Payment successful and verified securely.');}catch(err){msg('p5PaymentResult','❌ '+err.message,false)}},theme:{color:'#0d6efd'}});rzp.open();}catch(e){msg('p5PaymentResult','❌ '+e.message,false)}};
+
+// ---------- Phase 6: no client-side PIN; use authenticated role ----------
+if($('p6Open')) $('p6Open').onclick=async()=>{try{const d=await api('/api/auth/me');if(d.user.role!=='admin')throw new Error('Admin account required');$('p6Dashboard').style.display='block';}catch(e){alert(e.message)}};
+
+// ---------- Sponsor form: keep existing UI and send when fields are available ----------
+if($('spSave')) $('spSave').addEventListener('click',async()=>{try{const v=id=>$(id)?.value||'';await api('/api/sponsors',{method:'POST',body:{businessName:v('spName')||v('sponsorName'),mobile:v('spMobile'),city:v('spCity'),area:v('spArea'),description:v('spDesc'),website:v('spWebsite')}})}catch(e){console.warn(e.message)}});
+
+// Load current user silently so pages can work after refresh.
+api('/api/auth/me').then(d=>window.pavikoCurrentUser=d.user).catch(()=>{});
+})();
+</script>
+
+
+<!-- Paviko payment options: added without changing existing design -->
+<script>
+(function(){
+  function addPaymentOptions(){
+    var form=document.getElementById('p5PaymentForm');
+    if(!form || document.getElementById('pavikoPaymentMethods')) return;
+    var box=document.createElement('div');
+    box.id='pavikoPaymentMethods';
+    box.style.cssText='margin:12px 0;padding:12px;border-radius:12px;border:1px solid #dbe3ef;background:#fff;';
+    box.innerHTML =
+      '<b>Payment method</b>'+
+      '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">'+
+      '<label><input type="radio" name="pavikoPayMethod" value="upi" checked> UPI</label>'+
+      '<label><input type="radio" name="pavikoPayMethod" value="netbanking"> Net Banking</label>'+
+      '<label><input type="radio" name="pavikoPayMethod" value="card"> Debit Card</label>'+
+      '<label><input type="radio" name="pavikoPayMethod" value="card"> Credit Card</label>'+
+      '</div>'+
+      '<small style="display:block;margin-top:7px">UPI apps supported by the selected gateway may include Google Pay, PhonePe, Paytm and BHIM.</small>';
+    form.insertBefore(box, form.firstChild);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',addPaymentOptions);
+  else addPaymentOptions();
+})();
+</script>
+
+
+<style id="paviko-admin-proper-css">
+#paviko-admin-panel{display:none;margin:18px 0;padding:18px;border-radius:20px;background:#fff;border:1px solid #dfe6ef;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+#paviko-admin-panel .admin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#paviko-admin-panel .admin-card{padding:14px;border:1px solid #e3e8ef;border-radius:14px;background:#fafcff}
+#paviko-admin-panel button{border:0;border-radius:10px;padding:10px 14px;cursor:pointer}
+#paviko-admin-panel table{width:100%;border-collapse:collapse;font-size:13px}
+#paviko-admin-panel th,#paviko-admin-panel td{padding:8px;border-bottom:1px solid #e5e9ef;text-align:left}
+#paviko-admin-panel .admin-danger{background:#ffe8e8}
+#paviko-admin-panel .admin-ok{background:#e8f7ed}
+@media(max-width:700px){#paviko-admin-panel .admin-grid{grid-template-columns:1fr}#paviko-admin-panel{margin-bottom:110px}}
+</style>
+
+<section id="paviko-admin-panel">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+    <div><h2 style="margin:0">Admin Dashboard</h2><p style="margin:5px 0 0">Paviko control center</p></div>
+    <button id="pavikoAdminRefresh">Refresh</button>
+  </div>
+  <div class="admin-grid" style="margin-top:14px">
+    <div class="admin-card"><b>Total Users</b><div id="admUsers">—</div></div>
+    <div class="admin-card"><b>Workers</b><div id="admWorkers">—</div></div>
+    <div class="admin-card"><b>Bookings</b><div id="admBookings">—</div></div>
+    <div class="admin-card"><b>Paid Payments</b><div id="admPaid">—</div></div>
+  </div>
+  <div class="admin-card" style="margin-top:12px">
+    <b>Recent Bookings</b>
+    <div style="overflow:auto;margin-top:8px"><table><thead><tr><th>ID</th><th>Customer</th><th>Worker</th><th>Status</th><th>Date</th></tr></thead><tbody id="admBookingsTable"></tbody></table></div>
+  </div>
+  <div class="admin-card" style="margin-top:12px">
+    <b>Recent Payments</b>
+    <div style="overflow:auto;margin-top:8px"><table><thead><tr><th>ID</th><th>User</th><th>Purpose</th><th>Amount</th><th>Status</th></tr></thead><tbody id="admPaymentsTable"></tbody></table></div>
+  </div>
+  <div class="admin-card admin-danger" style="margin-top:12px">
+    <b>Admin security</b>
+    <p style="margin:6px 0">Admin access must be granted by the server using an admin role. No client-side PIN or hidden frontend password is used.</p>
+  </div>
+</section>
+
+<script id="paviko-admin-proper-js">
+(function(){
+  const api = window.pavikoApi || async function(url,opt){
+    const r=await fetch(url,Object.assign({credentials:"include",headers:{"Content-Type":"application/json"}},opt||{}));
+    const d=await r.json().catch(()=>({}));
+    if(!r.ok) throw new Error(d.error||"Request failed");
+    return d;
+  };
+  async function openAdmin(){
+    try{
+      const me=await api("/api/auth/me");
+      if(!me.user || me.user.role!=="admin") throw new Error("Admin account required");
+      document.getElementById("paviko-admin-panel").style.display="block";
+      await refresh();
+    }catch(e){alert(e.message)}
+  }
+  async function refresh(){
+    try{
+      const d=await api("/api/admin/summary");
+      const s=d.summary||{};
+      document.getElementById("admUsers").textContent=s.users??0;
+      document.getElementById("admWorkers").textContent=s.workers??0;
+      document.getElementById("admBookings").textContent=s.bookings??0;
+      document.getElementById("admPaid").textContent=s.paidPayments??0;
+      document.getElementById("admBookingsTable").innerHTML=(d.bookings||[]).map(b=>`<tr><td>${b.id}</td><td>${b.customer_name||"-"}</td><td>${b.worker_name||"-"}</td><td>${b.status}</td><td>${b.date||"-"}</td></tr>`).join("");
+      document.getElementById("admPaymentsTable").innerHTML=(d.payments||[]).map(p=>`<tr><td>${p.id}</td><td>${p.user_id}</td><td>${p.purpose}</td><td>₹${(p.amount_paise/100).toFixed(2)}</td><td>${p.status}</td></tr>`).join("");
+    }catch(e){alert(e.message)}
+  }
+  window.pavikoOpenAdmin=openAdmin;
+  document.addEventListener("DOMContentLoaded",()=>{
+    document.getElementById("pavikoAdminRefresh")?.addEventListener("click",refresh);
+    document.querySelectorAll("[data-admin-open]").forEach(x=>x.addEventListener("click",openAdmin));
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  window.pavikoUploadCloudMedia = async function(input){
+    const files=[...(input.files||[])];
+    if(!files.length)return;
+    const s=document.getElementById("pavikoCloudStatus");
+    if(s)s.textContent="Uploading...";
+    const fd=new FormData();
+    files.forEach(f=>fd.append("media",f));
+    try{
+      const r=await fetch("/api/media/cloudinary",{method:"POST",body:fd,credentials:"include"});
+      const d=await r.json();
+      if(!r.ok)throw new Error(d.error||"Upload failed");
+      if(s)s.textContent=d.files.length+" file(s) uploaded successfully.";
+      window.dispatchEvent(new CustomEvent("pavikoMediaUploaded",{detail:d.files}));
+    }catch(e){if(s)s.textContent=e.message;}
+  };
+  document.addEventListener("DOMContentLoaded",function(){
+    const t=document.querySelector("[data-worker-media],#workerProfileMedia,.worker-profile-media");
+    if(!t||document.getElementById("pavikoCloudMediaBox"))return;
+    const b=document.createElement("div");
+    b.id="pavikoCloudMediaBox";
+    b.style.cssText="margin-top:12px;padding:12px;border:1px solid #dfe6ef;border-radius:14px;background:#fff";
+    b.innerHTML='<b>Work Photos / Videos</b><div style="margin-top:8px"><input type="file" accept="image/*,video/*" multiple onchange="pavikoUploadCloudMedia(this)"></div><small id="pavikoCloudStatus"></small>';
+    t.appendChild(b);
+  });
+})();
+</script>
+
+</body>
+</html>
