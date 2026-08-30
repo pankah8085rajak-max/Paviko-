@@ -2809,7 +2809,7 @@ api('/api/auth/me').then(d=>window.pavikoCurrentUser=d.user).catch(()=>{});
     const fd=new FormData();
     files.forEach(f=>fd.append("media",f));
     try{
-      const r=await fetch("/api/media/cloudinary",{method:"POST",body:fd,credentials:"include"});
+      const r=await fetch("https://paviko-api-v1.onrender.com/api/media/cloudinary",{method:"POST",body:fd,credentials:"include"});
       const d=await r.json();
       if(!r.ok)throw new Error(d.error||"Upload failed");
       if(s)s.textContent=d.files.length+" file(s) uploaded successfully.";
