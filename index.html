@@ -1430,6 +1430,7 @@ body>.header, #paviko-quick-nav, #paviko-phase-switcher, #paviko-app-nav{display
 <script>
 (function(){
   'use strict';
+  const API = 'https://paviko-api-v1.onrender.com'; // ✅ UPDATED
   var names={electrician:'Electrician',plumber:'Plumber',carpenter:'Carpenter',painter:'Painter',cleaning:'Cleaning',wash:'Car/Bike Wash',ac:'AC Technician',tailor:'Tailor',mistri:'Raj Mistri'};
   function goBooking(service){var s=document.getElementById('bookingService'); if(s)s.value=service||''; var b=document.getElementById('booking'); if(b)b.scrollIntoView({behavior:'smooth'});}
   document.addEventListener('DOMContentLoaded',function(){
@@ -1510,6 +1511,7 @@ body>.header, #paviko-quick-nav, #paviko-phase-switcher, #paviko-app-nav{display
 <script id="paviko-phase1-js">
 (function(){
   "use strict";
+  const API = 'https://paviko-api-v1.onrender.com'; // ✅ UPDATED
   var KEY_W="paviko_phase1_workers", KEY_C="paviko_phase1_customers";
   function $(id){return document.getElementById(id);}
   function read(k){try{return JSON.parse(localStorage.getItem(k)||"[]")}catch(e){return[]}}
@@ -1630,6 +1632,7 @@ body>.header, #paviko-quick-nav, #paviko-phase-switcher, #paviko-app-nav{display
 <script id="paviko-id-js">
 (function(){
   "use strict";
+  const API = 'https://paviko-api-v1.onrender.com'; // ✅ UPDATED
   var KEY="paviko_worker_profiles_v1";
   function $(id){return document.getElementById(id)}
   function read(){try{return JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){return[]}}
@@ -1688,6 +1691,7 @@ body>.header, #paviko-quick-nav, #paviko-phase-switcher, #paviko-app-nav{display
 <script id="paviko-app-js">
 (function(){
   "use strict";
+  const API = 'https://paviko-api-v1.onrender.com'; // ✅ UPDATED
   function $(id){return document.getElementById(id)}
   function readWorkers(){
     var keys=["paviko_worker_profiles_v1","paviko_phase1_workers"];
@@ -1823,6 +1827,7 @@ body>.header, #paviko-quick-nav, #paviko-phase-switcher, #paviko-app-nav{display
 <script id="paviko-phase2-js">
 (function(){
   "use strict";
+  const API = 'https://paviko-api-v1.onrender.com'; // ✅ UPDATED
   var BKEY="paviko_phase2_bookings";
 
   function $(id){return document.getElementById(id)}
@@ -1954,6 +1959,7 @@ body>.header, #paviko-quick-nav, #paviko-phase-switcher, #paviko-app-nav{display
 <script id="paviko-phase3-js">
 (function(){
   "use strict";
+  const API = 'https://paviko-api-v1.onrender.com'; // ✅ UPDATED
   var BKEY="paviko_phase2_bookings", currentWorker=null;
 
   function $(id){return document.getElementById(id)}
@@ -2134,6 +2140,7 @@ body>.header, #paviko-quick-nav, #paviko-phase-switcher, #paviko-app-nav{display
 <script id="paviko-p456-js">
 (function(){
   "use strict";
+  const API = 'https://paviko-api-v1.onrender.com'; // ✅ UPDATED
   var RKEY="paviko_reviews_v1", PKEY="paviko_payments_v1", MKEY="paviko_messages_v1", NKEY="paviko_notifications_v1";
   function $(id){return document.getElementById(id)}
   function get(k){try{return JSON.parse(localStorage.getItem(k)||"[]")}catch(e){return[]}}
@@ -2202,6 +2209,7 @@ body>.header, #paviko-quick-nav, #paviko-phase-switcher, #paviko-app-nav{display
 <script id="paviko-navigation-js">
 (function(){
   "use strict";
+  const API = 'https://paviko-api-v1.onrender.com'; // ✅ UPDATED
   function $(id){return document.getElementById(id)}
   var menu=$("paviko-menu-panel");
   $("paviko-menu-btn").onclick=function(){menu.classList.toggle("open")};
@@ -2292,6 +2300,7 @@ body>.header, #paviko-quick-nav, #paviko-phase-switcher, #paviko-app-nav{display
 <script id="paviko-phase7-js">
 (function(){
 "use strict";
+const API = 'https://paviko-api-v1.onrender.com'; // ✅ UPDATED
 var otp=""; function $(id){return document.getElementById(id)}
 function validMobile(v){return /^[6-9][0-9]{9}$/.test(v)}
 $("p7SendOtp").onclick=function(){
@@ -2392,6 +2401,7 @@ $("p7Media").onchange=function(){
 <script id="paviko-sponsor-js">
 (function(){
   "use strict";
+  const API = 'https://paviko-api-v1.onrender.com'; // ✅ UPDATED
   function $(id){return document.getElementById(id)}
   $("spSave").onclick=function(){
     var name=$("spName").value.trim();
@@ -2414,6 +2424,7 @@ $("p7Media").onchange=function(){
 <script id="paviko-unified-controller">
 (function(){
 "use strict";
+const API = 'https://paviko-api-v1.onrender.com'; // ✅ UPDATED
 function byId(x){return document.getElementById(x)}
 function all(sel){return document.querySelectorAll(sel)}
 var sectionMap={
@@ -2488,6 +2499,7 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 
 <script id="paviko-final-navigation-fix">
 (function(){
+const API = 'https://paviko-api-v1.onrender.com'; // ✅ UPDATED
   function show(id){
     var target=document.getElementById(id);
     if(!target) return false;
@@ -2547,6 +2559,7 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 
 <script id="paviko-reference-controller">
 (function(){
+const API = 'https://paviko-api-v1.onrender.com'; // ✅ UPDATED
   function hideOld(){
     document.querySelectorAll(".paviko-app-section,.paviko-p2-section,.paviko-p3-section,.paviko-p456-section,.p7-section").forEach(function(x){x.style.display="none";});
   }
@@ -2595,7 +2608,7 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 <script id="paviko-real-backend-bridge">
 (function(){
 'use strict';
-const API='';
+const API='https://paviko-api-v1.onrender.com'; // ✅ UPDATED
 const $=id=>document.getElementById(id);
 async function api(url,opt={}){
   opt.credentials='include'; opt.headers=opt.headers||{};
@@ -2764,8 +2777,9 @@ api('/api/auth/me').then(d=>window.pavikoCurrentUser=d.user).catch(()=>{});
 
 <script id="paviko-admin-proper-js">
 (function(){
+  const API = 'https://paviko-api-v1.onrender.com'; // ✅ UPDATED
   const api = window.pavikoApi || async function(url,opt){
-    const r=await fetch(url,Object.assign({credentials:"include",headers:{"Content-Type":"application/json"}},opt||{}));
+    const r=await fetch(API+url,Object.assign({credentials:"include",headers:{"Content-Type":"application/json"}},opt||{}));
     const d=await r.json().catch(()=>({}));
     if(!r.ok) throw new Error(d.error||"Request failed");
     return d;
@@ -2801,6 +2815,7 @@ api('/api/auth/me').then(d=>window.pavikoCurrentUser=d.user).catch(()=>{});
 
 <script>
 (function(){
+  const API = 'https://paviko-api-v1.onrender.com'; // ✅ UPDATED
   window.pavikoUploadCloudMedia = async function(input){
     const files=[...(input.files||[])];
     if(!files.length)return;
@@ -2809,7 +2824,7 @@ api('/api/auth/me').then(d=>window.pavikoCurrentUser=d.user).catch(()=>{});
     const fd=new FormData();
     files.forEach(f=>fd.append("media",f));
     try{
-      const r=await fetch("https://paviko-api-v1.onrender.com/api/media/cloudinary",{method:"POST",body:fd,credentials:"include"});
+      const r=await fetch(API+"/api/media/cloudinary",{method:"POST",body:fd,credentials:"include"});
       const d=await r.json();
       if(!r.ok)throw new Error(d.error||"Upload failed");
       if(s)s.textContent=d.files.length+" file(s) uploaded successfully.";
