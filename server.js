@@ -6,6 +6,10 @@ app.get('/health', (req, res) => {
     res.json({ status: 'OK' });
 });
 
+app.get('/api/workers', (req, res) => {
+    res.json({ workers: [] });
+});
+
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`🚀 Server running on port ${PORT}`);
 });
